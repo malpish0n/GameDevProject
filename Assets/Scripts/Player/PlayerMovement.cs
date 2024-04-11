@@ -45,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("Wall run speed: " + _wallRunSpeed);
+        Debug.Log("Veloctiy: " + _rb.velocity);
 
         GetInputs();
         SpeedControl();
@@ -74,21 +74,20 @@ public class PlayerMovement : MonoBehaviour
 
     private void StateController()
     {
-        if(_isWallrunning)
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            state = MovementState.walking;
+            _movementSpeed = _walkSpeed;
+        }
+        else if (_isWallrunning)
         {
             state = MovementState.wallrunning;
             _movementSpeed = _wallRunSpeed;
         }
-
-        if(_isGrounded) 
+        else if (_isGrounded)
         {
             state = MovementState.running;
-            _movementSpeed = _runSpeed;    
-        }
-        else if (_isGrounded && Input.GetKey(KeyCode.LeftAlt))
-        {
-            state = MovementState.walking;
-            _movementSpeed = _walkSpeed;
+            _movementSpeed = _runSpeed;
         }
         else
         {

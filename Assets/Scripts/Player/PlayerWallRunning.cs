@@ -96,7 +96,7 @@ public class PlayerWallRunning : MonoBehaviour
         if (Input.GetKey(KeyCode.Space))
         {
             _rb.velocity = new Vector3(_rb.velocity.x, 0f, _rb.velocity.z);
-            _rb.AddForce(transform.up * 2.5f + wallNormal * 2.5f, ForceMode.Impulse);
+            _rb.AddForce(transform.up * 3f + wallNormal * 5f, ForceMode.Impulse);
         }
     }
 
