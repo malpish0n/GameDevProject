@@ -16,10 +16,11 @@ public class PlayerWallRunning : MonoBehaviour
     [SerializeField] private float _minJumpHeight;
     private RaycastHit _leftWallHit;
     private RaycastHit _rightWallHit;
-    private bool _wallLeft;
-    private bool _wallRight;
+    public bool _wallLeft;
+    public bool _wallRight;
 
     [SerializeField] private Transform _playerOrientation;
+    [SerializeField] private Transform _playerCamera;
     private PlayerMovement _movement;
     private Rigidbody _rb;
 
@@ -45,7 +46,10 @@ public class PlayerWallRunning : MonoBehaviour
     private void WallCheck()
     {
         _wallRight = Physics.Raycast(transform.position, _playerOrientation.right, out _rightWallHit, _wallCheckDistance, _wallMask);
+        Debug.DrawLine(transform.position, transform.position + _playerOrientation.right * _wallCheckDistance, Color.red);
+
         _wallLeft = Physics.Raycast(transform.position, -_playerOrientation.right, out _leftWallHit, _wallCheckDistance, _wallMask);
+        Debug.DrawLine(transform.position, transform.position + -_playerOrientation.right * _wallCheckDistance, Color.red);
     }
 
     private bool IsAboveTheGround()
@@ -88,6 +92,12 @@ public class PlayerWallRunning : MonoBehaviour
         Vector3 wallNormal = _wallRight ? _rightWallHit.normal : _leftWallHit.normal;
 
         Vector3 wallForward = Vector3.Cross(wallNormal, transform.up);
+
+        if (Input.GetKey(KeyCode.Space))
+        {
+            _rb.velocity = new Vector3(_rb.velocity.x, 0f, _rb.velocity.z);
+            _rb.AddForce(transform.up * 2.5f + wallNormal * 2.5f, ForceMode.Impulse);
+        }
     }
 
     private void StopWallRun()
