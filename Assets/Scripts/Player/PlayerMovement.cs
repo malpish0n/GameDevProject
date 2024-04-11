@@ -45,6 +45,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log("Wall run speed: " + _wallRunSpeed);
+
         GetInputs();
         SpeedControl();
         StateController();
@@ -112,8 +114,9 @@ public class PlayerMovement : MonoBehaviour
     private void GroundCheck()
     {
         _isGrounded = Physics.Raycast(transform.position, Vector3.down, _playerHeight * 0.5f + 0.2f, _groundMask);
+        Debug.DrawLine(transform.position, transform.position - Vector3.up * (_playerHeight * 0.5f + 0.2f), Color.red);
 
-        if(_isGrounded)
+        if (_isGrounded)
         {
             _rb.drag = _groundDrag;
         }
