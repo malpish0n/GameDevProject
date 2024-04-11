@@ -5,6 +5,9 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float _movementSpeed;
+    public float _walkSpeed;
+    public float _runSpeed;
+
     [SerializeField] private Transform orientation;
     [SerializeField] private float _jumpForce;
     [SerializeField] private float _jumpCooldown;
@@ -27,8 +30,13 @@ public class PlayerMovement : MonoBehaviour
 
     public enum MovementState
     {
-
+        running,
+        walking,
+        wallrunning,
+        air
     }
+
+    public bool _isWallrunning;
 
     private void Start()
     {
@@ -38,6 +46,8 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         GetInputs();
+        SpeedControl();
+        StateController();
     }
 
     private void FixedUpdate()
@@ -56,8 +66,31 @@ public class PlayerMovement : MonoBehaviour
             _canJump = false;
 
             Jump();
-
             Invoke(nameof(ResetJump), _jumpCooldown);
+        }
+    }
+
+    private void StateController()
+    {
+        if(_isWallrunning)
+        {
+            state = MovementState.wallrunning;
+            _movementSpeed = _wallRunSpeed;
+        }
+
+        if(_isGrounded) 
+        {
+            state = MovementState.running;
+            _movementSpeed = _runSpeed;    
+        }
+        else if (_isGrounded && Input.GetKey(KeyCode.LeftAlt))
+        {
+            state = MovementState.walking;
+            _movementSpeed = _walkSpeed;
+        }
+        else
+        {
+            state = MovementState.air;
         }
     }
 
