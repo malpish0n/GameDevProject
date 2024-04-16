@@ -39,11 +39,13 @@ public class PlayerMovement : MonoBehaviour
         walking,
         wallrunning,
         sliding,
+        dashing,
         air
     }
 
     public bool _isWallrunning;
     public bool _isSliding;
+    public bool _isDashing;
 
     private void Start()
     {
@@ -81,7 +83,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void StateController()
     {
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKey(KeyCode.LeftAlt))
         {
             state = MovementState.walking;
             _movementSpeed = _walkSpeed;
@@ -99,6 +101,10 @@ public class PlayerMovement : MonoBehaviour
         else if (_isSliding)
         {
             state = MovementState.sliding;
+        }
+        else if (_isDashing)
+        {
+            state = MovementState.dashing;
         }
         else
         {

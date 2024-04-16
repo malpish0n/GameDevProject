@@ -5575,7 +5575,7 @@ MeshRenderer:
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 2
+  m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -7058,41 +7058,9 @@ MonoBehaviour:
   m_Mesh: {fileID: 588406877}
   m_VersionIndex: 854
   m_IsSelectable: 1
-  m_SelectedFaces: 01000000110000001900000025000000
-  m_SelectedEdges:
-  - a: 4
-    b: 5
-  - a: 6
-    b: 4
-  - a: 5
-    b: 7
-  - a: 7
-    b: 6
-  - a: 68
-    b: 69
-  - a: 70
-    b: 68
-  - a: 69
-    b: 71
-  - a: 71
-    b: 70
-  - a: 100
-    b: 101
-  - a: 102
-    b: 100
-  - a: 101
-    b: 103
-  - a: 103
-    b: 102
-  - a: 148
-    b: 149
-  - a: 150
-    b: 148
-  - a: 149
-    b: 151
-  - a: 151
-    b: 150
-  m_SelectedVertices: 04000000050000000600000007000000440000004500000046000000470000006400000065000000660000006700000094000000950000009600000097000000
+  m_SelectedFaces: 
+  m_SelectedEdges: []
+  m_SelectedVertices: 
 --- !u!1 &423734553
 GameObject:
   m_ObjectHideFlags: 0
@@ -18159,6 +18127,22 @@ MonoBehaviour:
   _maxSlideTime: 0.75
   _slideForce: 200
   _slideYScale: 0.5
+--- !u!114 &2103311011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2017037072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1fcc8924f4ed3b46ac041ca03dc3235, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerOrientation: {fileID: 4137191}
+  _playerModel: {fileID: 1184106686}
+  _maxDashTime: 0.2
+  _dashForce: 1000
 --- !u!1001 &1818832108039789530
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18176,7 +18160,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
     - target: {fileID: 3121201947233542004, guid: dbeb2f03c43b35049bfd0158721b62f7,
         type: 3}
       propertyPath: _exitWallTime
@@ -18297,6 +18281,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7915531153783958329, guid: dbeb2f03c43b35049bfd0158721b62f7,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -18305,6 +18294,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 2103311010}
+    - targetCorrespondingSourceObject: {fileID: 1775428284750572566, guid: dbeb2f03c43b35049bfd0158721b62f7,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2103311011}
   m_SourcePrefab: {fileID: 100100000, guid: dbeb2f03c43b35049bfd0158721b62f7, type: 3}
 --- !u!1001 &1904633150224684767
 PrefabInstance:
@@ -18402,7 +18395,12 @@ PrefabInstance:
     - target: {fileID: 8498901970246849052, guid: 0eac0c1ce10147b4896f4b2516336d99,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8498901970246849052, guid: 0eac0c1ce10147b4896f4b2516336d99,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
