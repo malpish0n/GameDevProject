@@ -38,10 +38,12 @@ public class PlayerMovement : MonoBehaviour
         running,
         walking,
         wallrunning,
+        sliding,
         air
     }
 
     public bool _isWallrunning;
+    public bool _isSliding;
 
     private void Start()
     {
@@ -94,6 +96,10 @@ public class PlayerMovement : MonoBehaviour
             state = MovementState.running;
             _movementSpeed = _runSpeed;
         }
+        else if (_isSliding)
+        {
+            state = MovementState.sliding;
+        }
         else
         {
             state = MovementState.air;
@@ -106,7 +112,7 @@ public class PlayerMovement : MonoBehaviour
 
         if(SlopeCheck())
         {
-            _rb.AddForce(SlopeMoveDirection() * _movementSpeed * 10f, ForceMode.Force);
+            _rb.AddForce(SlopeMoveDirection(_moveDirection) * _movementSpeed * 10f, ForceMode.Force);
 
             if (_rb.velocity.y < 0)
                 _rb.AddForce(Vector3.down * 100f, ForceMode.Force);
@@ -172,7 +178,7 @@ public class PlayerMovement : MonoBehaviour
         _canJump = true;
     }
 
-    private bool SlopeCheck()
+    public bool SlopeCheck()
     {
         if(Physics.Raycast(transform.position, Vector3.down, out _slopeHit, _playerHeight * 0.5f + 1f))
         {
@@ -186,9 +192,9 @@ public class PlayerMovement : MonoBehaviour
         return false;
     }
 
-    private Vector3 SlopeMoveDirection()
+    public Vector3 SlopeMoveDirection(Vector3 direction)
     {
-        return Vector3.ProjectOnPlane(_moveDirection, _slopeHit.normal).normalized;
+        return Vector3.ProjectOnPlane(direction, _slopeHit.normal).normalized;
     }
 
     private void GetReferences()
