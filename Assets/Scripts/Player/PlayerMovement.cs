@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -20,6 +21,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private LayerMask _groundMask;
     private bool _isGrounded;
     [SerializeField] private float _groundDrag;
+
+    [SerializeField] private float _maxSlopeAngle;
+    [SerializeField] private LayerMask _slopeMask;
+    private RaycastHit _slopeHit;
 
     private float _hInput, _vInput;
     private Vector3 _moveDirection;
@@ -45,7 +50,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("Veloctiy: " + _rb.velocity);
+        Debug.Log(SlopeCheck());
 
         GetInputs();
         SpeedControl();
@@ -99,6 +104,14 @@ public class PlayerMovement : MonoBehaviour
     {
         _moveDirection = orientation.forward * _vInput + orientation.right * _hInput;
 
+        if(SlopeCheck())
+        {
+            _rb.AddForce(SlopeMoveDirection() * _movementSpeed * 10f, ForceMode.Force);
+
+            if (_rb.velocity.y < 0)
+                _rb.AddForce(Vector3.down * 100f, ForceMode.Force);
+        }
+
         if(_isGrounded )
         {
             _rb.AddForce(_moveDirection.normalized * _movementSpeed * 10f, ForceMode.Force);
@@ -107,7 +120,8 @@ public class PlayerMovement : MonoBehaviour
         {
             _rb.AddForce(_moveDirection.normalized * _movementSpeed * _airMultiplayer, ForceMode.Force);
         }
-        
+
+        _rb.useGravity = !SlopeCheck(); 
     }
 
     private void GroundCheck()
@@ -127,13 +141,21 @@ public class PlayerMovement : MonoBehaviour
 
     private void SpeedControl()
     {
-        Vector3 flatVel = new Vector3(_rb.velocity.x, 0f, _rb.velocity.z);
-
-        // limit velocity if needed
-        if (flatVel.magnitude > _movementSpeed)
+        if(SlopeCheck())
         {
-            Vector3 limitedVel = flatVel.normalized * _movementSpeed;
-            _rb.velocity = new Vector3(limitedVel.x, _rb.velocity.y, limitedVel.z);
+            if(_rb.velocity.magnitude > _movementSpeed)
+                _rb.velocity = _rb.velocity.normalized * _movementSpeed;
+        }
+        else
+        {
+            Vector3 flatVel = new Vector3(_rb.velocity.x, 0f, _rb.velocity.z);
+
+            // limit velocity if needed
+            if (flatVel.magnitude > _movementSpeed)
+            {
+                Vector3 limitedVel = flatVel.normalized * _movementSpeed;
+                _rb.velocity = new Vector3(limitedVel.x, _rb.velocity.y, limitedVel.z);
+            }
         }
     }
 
@@ -148,6 +170,25 @@ public class PlayerMovement : MonoBehaviour
     private void ResetJump()
     {
         _canJump = true;
+    }
+
+    private bool SlopeCheck()
+    {
+        if(Physics.Raycast(transform.position, Vector3.down, out _slopeHit, _playerHeight * 0.5f + 1f))
+        {
+            Debug.DrawLine(transform.position, transform.position + Vector3.down * (_playerHeight * 0.5f + 1f), Color.green);
+
+            float angle = Vector3.Angle(Vector3.up, _slopeHit.normal);
+
+            return angle < _maxSlopeAngle && angle != 0;
+        }
+
+        return false;
+    }
+
+    private Vector3 SlopeMoveDirection()
+    {
+        return Vector3.ProjectOnPlane(_moveDirection, _slopeHit.normal).normalized;
     }
 
     private void GetReferences()
