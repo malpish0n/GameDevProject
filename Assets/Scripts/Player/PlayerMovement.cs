@@ -30,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 _moveDirection;
 
     private Rigidbody _rb;
+    private Animator _animator;
 
     public MovementState state;
 
@@ -40,6 +41,7 @@ public class PlayerMovement : MonoBehaviour
         wallrunning,
         sliding,
         dashing,
+        idle,
         air
     }
 
@@ -54,7 +56,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(SlopeCheck());
+        Debug.Log(_rb.velocity);
 
         GetInputs();
         SpeedControl();
@@ -86,6 +88,8 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftAlt))
         {
             state = MovementState.walking;
+            _animator.SetBool("isFalling", false);
+            _animator.SetFloat("Speed", 0.5f, 0.2f, Time.deltaTime);
             _movementSpeed = _walkSpeed;
         }
         else if (_isWallrunning)
@@ -93,9 +97,11 @@ public class PlayerMovement : MonoBehaviour
             state = MovementState.wallrunning;
             _movementSpeed = _wallRunSpeed;
         }
-        else if (_isGrounded)
+        else if (_isGrounded && (_rb.velocity.x != 0 || _rb.velocity.y != 0 || _rb.velocity.z != 0))
         {
             state = MovementState.running;
+            _animator.SetBool("isFalling", false);
+            _animator.SetFloat("Speed", 1f, 0.2f, Time.deltaTime);
             _movementSpeed = _runSpeed;
         }
         else if (_isSliding)
@@ -106,9 +112,16 @@ public class PlayerMovement : MonoBehaviour
         {
             state = MovementState.dashing;
         }
+        else if (_isGrounded && (_rb.velocity.x == 0 || _rb.velocity.y == 0 || _rb.velocity.z == 0))
+        {
+            state = MovementState.idle;
+            _animator.SetBool("isFalling", false);
+            _animator.SetFloat("Speed", 0, 0.2f, Time.deltaTime);
+        }
         else
         {
             state = MovementState.air;
+            _animator.SetBool("isFalling", true);
         }
     }
 
@@ -206,5 +219,6 @@ public class PlayerMovement : MonoBehaviour
     private void GetReferences()
     {
         _rb = GetComponent<Rigidbody>();
+        _animator = GetComponentInChildren<Animator>();
     }
 }
