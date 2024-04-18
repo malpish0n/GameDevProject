@@ -12,8 +12,6 @@ public class PlayerCamera : MonoBehaviour
     private float _xRotation, _yRotation;
     private float _mouseX, _mouseY;
 
-    static float t = 0.0f;
-
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
