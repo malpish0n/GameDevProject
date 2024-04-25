@@ -120,7 +120,6 @@ public class PlayerWallRunning : MonoBehaviour
     private void StartWallRun()
     {
         _movement._isWallrunning = true;
-
         _wallRunTimer = _maxWallRunTime;
     }
 
