@@ -58,7 +58,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(IsMoving());
+        Debug.Log(SlopeCheck());
 
         GetInputs();
         SpeedControl();
@@ -77,7 +77,7 @@ public class PlayerMovement : MonoBehaviour
         _vInput = Input.GetAxisRaw("Vertical");
         Input.GetKey(KeyCode.Z);
 
-        if (Input.GetKey(KeyCode.Space) && _canJump && _isGrounded)
+        if (Input.GetButton("Jump") && _canJump && _isGrounded)
         {
             _canJump = false;
 
