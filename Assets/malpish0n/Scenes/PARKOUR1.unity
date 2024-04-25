@@ -7505,9 +7505,19 @@ PrefabInstance:
       objectReference: {fileID: 834326568}
     - target: {fileID: 5794032287737986228, guid: f7845ef74119fb04e81633c70c93c5c2,
         type: 3}
+      propertyPath: _wallJumpUpForce
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5794032287737986228, guid: f7845ef74119fb04e81633c70c93c5c2,
+        type: 3}
       propertyPath: _playerOrientation
       value: 
       objectReference: {fileID: 818933117}
+    - target: {fileID: 5794032287737986228, guid: f7845ef74119fb04e81633c70c93c5c2,
+        type: 3}
+      propertyPath: _wallJumpSideForce
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 6894875424529903315, guid: f7845ef74119fb04e81633c70c93c5c2,
         type: 3}
       propertyPath: m_Controller
