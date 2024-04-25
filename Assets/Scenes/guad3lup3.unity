@@ -18147,18 +18147,38 @@ PrefabInstance:
     - target: {fileID: 3071674781188231429, guid: c4d2a81e26e4e174ba1baeeab3e0831c,
         type: 3}
       propertyPath: _jumpForce
-      value: 7
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3071674781188231429, guid: c4d2a81e26e4e174ba1baeeab3e0831c,
+        type: 3}
+      propertyPath: _wallRunSpeed
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4432548299965626248, guid: c4d2a81e26e4e174ba1baeeab3e0831c,
         type: 3}
       propertyPath: _playerCamera
       value: 
       objectReference: {fileID: 8042504873880388803}
+    - target: {fileID: 4432548299965626248, guid: c4d2a81e26e4e174ba1baeeab3e0831c,
+        type: 3}
+      propertyPath: _wallJumpUpForce
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4432548299965626248, guid: c4d2a81e26e4e174ba1baeeab3e0831c,
+        type: 3}
+      propertyPath: _wallJumpSideForce
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 4987620558222238330, guid: c4d2a81e26e4e174ba1baeeab3e0831c,
         type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 6777993695676130087, guid: c4d2a81e26e4e174ba1baeeab3e0831c,
+        type: 3}
+      propertyPath: _camera
+      value: 
+      objectReference: {fileID: 8042504873880388803}
     - target: {fileID: 6777993695676130087, guid: c4d2a81e26e4e174ba1baeeab3e0831c,
         type: 3}
       propertyPath: _dashForce

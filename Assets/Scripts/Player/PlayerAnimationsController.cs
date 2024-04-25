@@ -31,9 +31,21 @@ public class PlayerAnimationsController : MonoBehaviour
         else if (_playerMovement.state == MovementState.running)
         {
             _animator.SetFloat("Speed", 1f, 0.2f, Time.deltaTime);
+
+            if(_playerMovement._vInput > 0)
+            {
+                _animator.SetFloat("RunningDirection", 0, 0.2f, Time.deltaTime);
+            }
+
+            if (_playerMovement._vInput < 0)
+            {
+                _animator.SetFloat("RunningDirection", 1f, 0.2f, Time.deltaTime);
+            }
+
+            _animator.SetFloat("RunningDirection", 0, 0.2f, Time.deltaTime);
         }
 
-        if(_playerMovement._isSliding)
+        if(_playerMovement.state == MovementState.sliding)
         {
             _animator.SetBool("isSliding", true);
         }

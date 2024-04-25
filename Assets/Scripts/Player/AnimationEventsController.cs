@@ -14,11 +14,11 @@ public class AnimationEventsController : MonoBehaviour
 
     public void LoopSlideAnimation()
     {
-        if (_movement.SlopeCheck() && _movement._isSliding)
+        if (_movement.SlopeCheck() && _movement.IsSliding)
         {
             _animator.speed = 0f;
         }
-        else if (!_movement.SlopeCheck() && _movement._isSliding)
+        else if (!_movement.SlopeCheck())
         {
             _animator.speed = 1f;
         }

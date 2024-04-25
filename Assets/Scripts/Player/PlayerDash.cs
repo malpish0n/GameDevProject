@@ -6,6 +6,7 @@ public class PlayerDash : MonoBehaviour
 {
     [SerializeField] private Transform _playerOrientation;
     [SerializeField] private Transform _playerModel;
+    [SerializeField] private Transform _camera;
     private Rigidbody _rb;
     private PlayerMovement _playerMovement;
 
@@ -53,14 +54,14 @@ public class PlayerDash : MonoBehaviour
 
     private void StartDash()
     {
-        _playerMovement._isDashing = true;
+        _playerMovement.IsDashing = true;
         _isDashing = true;
         _dashTimer = _maxDashTime;
     }
 
     private void Dash()
     {
-        Vector3 inputDirection = _playerOrientation.forward * _vInput;
+        Vector3 inputDirection = _camera.forward * _vInput;
 
         _rb.AddForce(inputDirection.normalized * _dashForce, ForceMode.Force);
         _dashTimer -= Time.deltaTime;
@@ -73,7 +74,7 @@ public class PlayerDash : MonoBehaviour
 
     private void StopDash()
     {
-        _playerMovement._isDashing = false;
+        _playerMovement.IsDashing = false;
         _isDashing = false;
     }
 
