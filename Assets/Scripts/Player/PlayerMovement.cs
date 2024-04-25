@@ -36,15 +36,17 @@ public class PlayerMovement : MonoBehaviour
 
     public enum MovementState
     {
+        idle,
         running,
         walking,
         wallrunning,
         sliding,
         dashing,
-        idle,
         air
     }
 
+    public bool _isRunning;
+    public bool _isWalking;
     public bool _isWallrunning;
     public bool _isSliding;
     public bool _isDashing;
@@ -56,7 +58,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(_rb.velocity);
+        Debug.Log(SlopeCheck());
 
         GetInputs();
         SpeedControl();
@@ -73,56 +75,68 @@ public class PlayerMovement : MonoBehaviour
     {
         _hInput = Input.GetAxisRaw("Horizontal");
         _vInput = Input.GetAxisRaw("Vertical");
+        Input.GetKey(KeyCode.Z);
 
-        if (Input.GetKey(KeyCode.Space) && _canJump && _isGrounded)
+        if (Input.GetButton("Jump") && _canJump && _isGrounded)
         {
             _canJump = false;
 
             Jump();
             Invoke(nameof(ResetJump), _jumpCooldown);
         }
+
+        if (Input.GetKey(KeyCode.Z))
+        {
+            _isWalking = true;
+        }
+        else
+        {
+            _isWalking = false;
+        }
     }
 
     private void StateController()
     {
-        if (Input.GetKey(KeyCode.LeftAlt))
+        if (_isGrounded && IsMoving() && !_isWalking)
         {
+            state = MovementState.running;
+            _movementSpeed = _runSpeed;
+        }
+        else if (_isGrounded && _isWalking) 
+        { 
             state = MovementState.walking;
-            _animator.SetBool("isFalling", false);
-            _animator.SetFloat("Speed", 0.5f, 0.2f, Time.deltaTime);
             _movementSpeed = _walkSpeed;
+        }
+        else if (_isGrounded && _isSliding)
+        {
+            state = MovementState.sliding;
+        }
+        else if (_isGrounded && _isDashing)
+        {
+            state = MovementState.dashing;
         }
         else if (_isWallrunning)
         {
             state = MovementState.wallrunning;
-            _movementSpeed = _wallRunSpeed;
         }
-        else if (_isGrounded && (_rb.velocity.x != 0 || _rb.velocity.y != 0 || _rb.velocity.z != 0))
+        else if(!_isGrounded)
         {
-            state = MovementState.running;
-            _animator.SetBool("isFalling", false);
-            _animator.SetFloat("Speed", 1f, 0.2f, Time.deltaTime);
-            _movementSpeed = _runSpeed;
-        }
-        else if (_isSliding)
-        {
-            state = MovementState.sliding;
-        }
-        else if (_isDashing)
-        {
-            state = MovementState.dashing;
-        }
-        else if (_isGrounded && (_rb.velocity.x == 0 || _rb.velocity.y == 0 || _rb.velocity.z == 0))
-        {
-            state = MovementState.idle;
-            _animator.SetBool("isFalling", false);
-            _animator.SetFloat("Speed", 0, 0.2f, Time.deltaTime);
+            state= MovementState.air;
         }
         else
         {
-            state = MovementState.air;
-            _animator.SetBool("isFalling", true);
+            state = MovementState.idle;
         }
+    }
+
+    private bool IsMoving()
+    {
+        if (_rb.velocity != new Vector3(0, 0, 0))
+        {
+            return true;
+        }
+
+        return false;
     }
 
     private void MovePlayer()
@@ -137,7 +151,7 @@ public class PlayerMovement : MonoBehaviour
                 _rb.AddForce(Vector3.down * 100f, ForceMode.Force);
         }
 
-        if(_isGrounded )
+        if(_isGrounded)
         {
             _rb.AddForce(_moveDirection.normalized * _movementSpeed * 10f, ForceMode.Force);
         }

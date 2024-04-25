@@ -60,7 +60,7 @@ public class PlayerDash : MonoBehaviour
 
     private void Dash()
     {
-        Vector3 inputDirection = _playerOrientation.forward * _vInput + _playerOrientation.right * _hInput;
+        Vector3 inputDirection = _playerOrientation.forward * _vInput;
 
         _rb.AddForce(inputDirection.normalized * _dashForce, ForceMode.Force);
         _dashTimer -= Time.deltaTime;
