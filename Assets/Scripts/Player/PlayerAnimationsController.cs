@@ -22,27 +22,27 @@ public class PlayerAnimationsController : MonoBehaviour
     {
         if(_playerMovement.state == MovementState.idle)
         {
-            _animator.SetFloat("Speed", 0, 0.2f, Time.deltaTime);
+            _animator.SetFloat("Speed", 0, 0.05f, Time.deltaTime);
         }
         else if(_playerMovement.state == MovementState.walking)
         {
-            _animator.SetFloat("Speed", 0.5f, 0.2f, Time.deltaTime);
+            _animator.SetFloat("Speed", 0.5f, 0.05f, Time.deltaTime);
         }
         else if (_playerMovement.state == MovementState.running)
         {
-            _animator.SetFloat("Speed", 1f, 0.2f, Time.deltaTime);
+            _animator.SetFloat("Speed", 1f, 0.05f, Time.deltaTime);
 
             if(_playerMovement._vInput > 0)
             {
-                _animator.SetFloat("RunningDirection", 0, 0.2f, Time.deltaTime);
+                _animator.SetFloat("RunningDirection", 0, 0.05f, Time.deltaTime);
             }
 
             if (_playerMovement._vInput < 0)
             {
-                _animator.SetFloat("RunningDirection", 1f, 0.2f, Time.deltaTime);
+                _animator.SetFloat("RunningDirection", 1f, 0.05f, Time.deltaTime);
             }
 
-            _animator.SetFloat("RunningDirection", 0, 0.2f, Time.deltaTime);
+            _animator.SetFloat("RunningDirection", 0, 0.05f, Time.deltaTime);
         }
 
         if(_playerMovement.state == MovementState.sliding)
@@ -52,6 +52,24 @@ public class PlayerAnimationsController : MonoBehaviour
         else
         {
             _animator.SetBool("isSliding", false);
+        }
+
+        if(_playerMovement.state == MovementState.jump)
+        {
+            _animator.SetBool("isJumping", true);
+        }
+        else
+        {
+            _animator.SetBool("isJumping", false);
+        }
+
+        if (_playerMovement.state == MovementState.air)
+        {
+            _animator.SetBool("isFalling", true);
+        }
+        else
+        {
+            _animator.SetBool("isFalling", false);
         }
     }
 

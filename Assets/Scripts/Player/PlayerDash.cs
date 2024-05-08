@@ -4,19 +4,20 @@ using UnityEngine;
 
 public class PlayerDash : MonoBehaviour
 {
-    [SerializeField] private Transform _playerOrientation;
-    [SerializeField] private Transform _playerModel;
-    [SerializeField] private Transform _camera;
+    [SerializeField] private Transform _player;
+    [SerializeField] private Camera _camera;
     private Rigidbody _rb;
     private PlayerMovement _playerMovement;
+    private PlayerStats _playerStats;
+    private float _cameraFov = 60f;
 
-    [SerializeField] private float _maxDashTime;
     [SerializeField] private float _dashForce;
-    private float _dashTimer;
+    [SerializeField] private float _dashUpwardForce;
+    [SerializeField] private float _dashDuration;
+    [SerializeField] private int _dashStaminaCost;
 
-    private float _vInput, _hInput;
-
-    private bool _isDashing;
+    [SerializeField] private float _dashCd;
+    private float _dashCdTimer;
 
     private void Start()
     {
@@ -28,59 +29,57 @@ public class PlayerDash : MonoBehaviour
         GetInputs();
     }
 
-    private void FixedUpdate()
+    private void GetInputs()
     {
-        if (_isDashing)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && _rb.velocity != new Vector3(0, 0, 0) && _playerStats._stamina > 0)
         {
             Dash();
         }
-    }
 
-    private void GetInputs()
-    {
-        _hInput = Input.GetAxisRaw("Horizontal");
-        _vInput = Input.GetAxisRaw("Vertical");
-
-        if (Input.GetKeyDown(KeyCode.LeftShift) && (_hInput != 0 || _vInput != 0))
+        if(_dashCdTimer > 0)
         {
-            StartDash();
+            _dashCdTimer -= Time.deltaTime;
         }
-
-        if (Input.GetKeyUp(KeyCode.LeftControl) && _isDashing)
-        {
-            StopDash();
-        }
-    }
-
-    private void StartDash()
-    {
-        _playerMovement.IsDashing = true;
-        _isDashing = true;
-        _dashTimer = _maxDashTime;
     }
 
     private void Dash()
     {
-        Vector3 inputDirection = _camera.forward * _vInput;
-
-        _rb.AddForce(inputDirection.normalized * _dashForce, ForceMode.Force);
-        _dashTimer -= Time.deltaTime;
-
-        if (_dashTimer <= 0)
+        if(_dashCdTimer > 0)
         {
-            StopDash();
+            return;
         }
+        else
+        {
+            _dashCdTimer = _dashCd;
+        }
+        
+        _playerMovement.IsDashing = true;
+        _playerStats.loseStamina(_dashStaminaCost);
+
+        Vector3 forceToApply = _camera.transform.forward * _dashForce + _camera.transform.up * _dashUpwardForce;
+
+        delayedForceToApply = forceToApply;
+        Invoke(nameof(DelayedDashForce), 0.025f);
+
+        Invoke(nameof(ResetDash), _dashDuration);
     }
 
-    private void StopDash()
+    private Vector3 delayedForceToApply;
+
+    private void DelayedDashForce()
+    {
+        _rb.AddForce(delayedForceToApply, ForceMode.Impulse);   
+    }
+
+    private void ResetDash()
     {
         _playerMovement.IsDashing = false;
-        _isDashing = false;
     }
 
     private void GetReferences()
     {
         _rb = GetComponent<Rigidbody>();
         _playerMovement = GetComponent<PlayerMovement>();
+        _playerStats = GetComponent<PlayerStats>();
     }
 }

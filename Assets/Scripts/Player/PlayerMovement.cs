@@ -8,14 +8,14 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _movementSpeed;
     public float _walkSpeed;
     public float _runSpeed;
+    public float _wallRunSpeed;
+    public float _dashSpeed;
 
     [SerializeField] private Transform orientation;
     [SerializeField] private float _jumpForce;
     [SerializeField] private float _jumpCooldown;
     [SerializeField] private float _airMultiplayer;
     private bool _canJump = true;
-
-    public float _wallRunSpeed;
 
     [SerializeField] private float _playerHeight;
     [SerializeField] private LayerMask _groundMask;
@@ -34,8 +34,8 @@ public class PlayerMovement : MonoBehaviour
     public bool _isRunning;
     public bool _isWalking;
     public bool _isWallrunning;
-    [SerializeField] private bool _isSliding;
-    [SerializeField] private bool _isDashing;
+    private bool _isSliding;
+    private bool _isDashing;
 
     public bool IsSliding
     {
@@ -58,10 +58,9 @@ public class PlayerMovement : MonoBehaviour
         wallrunning,
         sliding,
         dashing,
+        jump,
         air
     }
-
-    
 
     private void Start()
     {
@@ -73,11 +72,6 @@ public class PlayerMovement : MonoBehaviour
         GetInputs();
         SpeedControl();
         StateController();
-
-        Debug.Log("Is moving: " + IsMoving());
-        Debug.Log("Is walking: " + _isWalking);
-        Debug.Log("Is sliding" + IsSliding);
-        Debug.Log("Is dashing: " + IsDashing);
     }
 
     private void FixedUpdate()
@@ -135,17 +129,17 @@ public class PlayerMovement : MonoBehaviour
         if (_isDashing || (!_isGrounded && _isDashing))
         {
             state = MovementState.dashing;
+            _movementSpeed = _dashSpeed;
+        }
+        else if (!_isGrounded)
+        {
+            state = MovementState.air;
         }
 
         if (_isWallrunning)
         {
             state = MovementState.wallrunning;
             _movementSpeed = _wallRunSpeed;
-        }
-        
-        if(!_isGrounded)
-        {
-            state= MovementState.air;
         }
     }
 
