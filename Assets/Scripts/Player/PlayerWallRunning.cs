@@ -25,7 +25,7 @@ public class PlayerWallRunning : MonoBehaviour
     [SerializeField] private float _exitWallTime;
     private float _exitWallTimer;
 
-    [SerializeField] private Transform _playerOrientation;
+    [SerializeField] private Transform _playerModel;
     [SerializeField] private Transform _playerCamera;
     private PlayerMovement _movement;
     private Rigidbody _rb;
@@ -51,11 +51,11 @@ public class PlayerWallRunning : MonoBehaviour
 
     private void WallCheck()
     {
-        _wallRight = Physics.Raycast(transform.position, _playerOrientation.right, out _rightWallHit, _wallCheckDistance, _wallMask);
-        Debug.DrawLine(transform.position, transform.position + _playerOrientation.right * _wallCheckDistance, Color.red);
+        _wallRight = Physics.Raycast(transform.position, _playerModel.right, out _rightWallHit, _wallCheckDistance, _wallMask);
+        Debug.DrawLine(transform.position, transform.position + _playerModel.right * _wallCheckDistance, Color.red);
 
-        _wallLeft = Physics.Raycast(transform.position, -_playerOrientation.right, out _leftWallHit, _wallCheckDistance, _wallMask);
-        Debug.DrawLine(transform.position, transform.position + -_playerOrientation.right * _wallCheckDistance, Color.red);
+        _wallLeft = Physics.Raycast(transform.position, -_playerModel.right, out _leftWallHit, _wallCheckDistance, _wallMask);
+        Debug.DrawLine(transform.position, transform.position + -_playerModel.right * _wallCheckDistance, Color.red);
     }
 
     private bool IsAboveTheGround()

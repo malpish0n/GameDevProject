@@ -167,26 +167,25 @@ MonoBehaviour:
   _movementSpeed: 0
   _walkSpeed: 5
   _runSpeed: 12
+  _wallRunSpeed: 15
+  _dashSpeed: 0
   orientation: {fileID: 6228523870288704247}
   _jumpForce: 5
   _jumpCooldown: 0.3
   _airMultiplayer: 0.4
-  _wallRunSpeed: 15
   _playerHeight: 2
   _groundMask:
     serializedVersion: 2
     m_Bits: 256
   _groundDrag: 6
   _maxSlopeAngle: 45
-  _slopeMask:
-    serializedVersion: 2
-    m_Bits: 0
-  state: 5
+  _hInput: 0
+  _vInput: 0
+  _isGrounded: 0
   _isRunning: 0
   _isWalking: 0
   _isWallrunning: 0
-  _isSliding: 0
-  _isDashing: 0
+  state: 5
 --- !u!114 &4432548299965626248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -245,10 +244,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1fcc8924f4ed3b46ac041ca03dc3235, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerOrientation: {fileID: 6228523870288704247}
-  _playerModel: {fileID: 6228523870288704247}
-  _maxDashTime: 0.2
+  _player: {fileID: 0}
+  _camera: {fileID: 0}
   _dashForce: 1000
+  _dashUpwardForce: 0
+  _dashDuration: 0
+  _dashStaminaCost: 0
+  _dashCd: 0
 --- !u!114 &7809735283338103094
 MonoBehaviour:
   m_ObjectHideFlags: 0

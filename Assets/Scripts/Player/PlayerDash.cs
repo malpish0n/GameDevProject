@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerDash : MonoBehaviour
 {
-    [SerializeField] private Transform _player;
-    [SerializeField] private Camera _camera;
+    [SerializeField] private Transform _playerModel;
+    [SerializeField] private Camera _playerCamera;
     private Rigidbody _rb;
     private PlayerMovement _playerMovement;
     private PlayerStats _playerStats;
@@ -56,7 +56,7 @@ public class PlayerDash : MonoBehaviour
         _playerMovement.IsDashing = true;
         _playerStats.loseStamina(_dashStaminaCost);
 
-        Vector3 forceToApply = _camera.transform.forward * _dashForce + _camera.transform.up * _dashUpwardForce;
+        Vector3 forceToApply = _playerCamera.transform.forward * _dashForce + _playerCamera.transform.up * _dashUpwardForce;
 
         delayedForceToApply = forceToApply;
         Invoke(nameof(DelayedDashForce), 0.025f);

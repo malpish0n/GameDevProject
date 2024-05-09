@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     public float _wallRunSpeed;
     public float _dashSpeed;
 
-    [SerializeField] private Transform orientation;
+    [SerializeField] private Transform _playerModel;
     [SerializeField] private float _jumpForce;
     [SerializeField] private float _jumpCooldown;
     [SerializeField] private float _airMultiplayer;
@@ -155,7 +155,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void MovePlayer()
     {
-        _moveDirection = orientation.forward * _vInput + orientation.right * _hInput;
+        _moveDirection = _playerModel.forward * _vInput + _playerModel.right * _hInput;
 
         if(SlopeCheck())
         {

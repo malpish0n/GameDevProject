@@ -6,8 +6,8 @@ using static UnityEngine.Tilemaps.Tilemap;
 
 public class PlayerSlide : MonoBehaviour
 {
-    [SerializeField] private Transform _playerOrientation;
     [SerializeField] private Transform _playerModel;
+    [SerializeField] private Transform _playerCollider;
     private Rigidbody _rb;
     private PlayerMovement _playerMovement;
 
@@ -60,14 +60,14 @@ public class PlayerSlide : MonoBehaviour
     {
         _playerMovement.IsSliding = true;
         _isSliding = true;
-        _playerModel.localScale = new Vector3(_playerModel.localScale.x, _slideYScale, _playerModel.localScale.z);
+        _playerCollider.localScale = new Vector3(_playerCollider.localScale.x, _slideYScale, _playerCollider.localScale.z);
         _rb.AddForce(Vector3.down * 5f, ForceMode.Impulse);
 
         _slideTimer = _maxSlideTime;
     }
     private void SlidingMovement()
     {
-        Vector3 inputDirection = _playerOrientation.forward * _vInput + _playerOrientation.right * _hInput;
+        Vector3 inputDirection = _playerModel.forward * _vInput + _playerModel.right * _hInput;
         
         //normal sliding
         if(!_playerMovement.SlopeCheck() || _rb.velocity.y > -0.01f)
@@ -92,7 +92,7 @@ public class PlayerSlide : MonoBehaviour
     {
         _playerMovement.IsSliding = false;
         _isSliding = false;
-        _playerModel.localScale = new Vector3(_playerModel.localScale.x, _startYScale, _playerModel.localScale.z);
+        _playerCollider.localScale = new Vector3(_playerCollider.localScale.x, _startYScale, _playerCollider.localScale.z);
     }
 
     private void GetRefereneces()
