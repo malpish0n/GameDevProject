@@ -45,7 +45,7 @@ public class PlayerSlide : MonoBehaviour
         _hInput = Input.GetAxisRaw("Horizontal");
         _vInput = Input.GetAxisRaw("Vertical");
 
-        if (Input.GetKeyDown(KeyCode.LeftControl) && (_hInput !=0 || _vInput != 0))
+        if (Input.GetKeyDown(KeyCode.LeftControl) && (_hInput !=0 || _vInput != 0) && _playerMovement._isGrounded)
         {
             StartSlide();
         }
@@ -58,7 +58,7 @@ public class PlayerSlide : MonoBehaviour
 
     private void StartSlide()
     {
-        _playerMovement._isSliding = true;
+        _playerMovement.IsSliding = true;
         _isSliding = true;
         _playerModel.localScale = new Vector3(_playerModel.localScale.x, _slideYScale, _playerModel.localScale.z);
         _rb.AddForce(Vector3.down * 5f, ForceMode.Impulse);
@@ -90,7 +90,7 @@ public class PlayerSlide : MonoBehaviour
 
     private void StopSlide()
     {
-        _playerMovement._isSliding = false;
+        _playerMovement.IsSliding = false;
         _isSliding = false;
         _playerModel.localScale = new Vector3(_playerModel.localScale.x, _startYScale, _playerModel.localScale.z);
     }
