@@ -9,7 +9,11 @@ public class PlayerDash : MonoBehaviour
     private Rigidbody _rb;
     private PlayerMovement _playerMovement;
     private PlayerStats _playerStats;
-    private float _cameraFov = 60f;
+    
+    private float _basicCameraFov;
+    private float _targetCameraFov = 80f;
+    private float _cameraFovTimer = 2f;
+    private float _currentCameraFovTime;
 
     [SerializeField] private float _dashForce;
     [SerializeField] private float _dashUpwardForce;
@@ -31,9 +35,14 @@ public class PlayerDash : MonoBehaviour
 
     private void GetInputs()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift) && _rb.velocity != new Vector3(0, 0, 0) && _playerStats._stamina > 0)
+        if (Input.GetKey(KeyCode.LeftShift) && _rb.velocity != new Vector3(0, 0, 0) && _playerStats._stamina > 0)
         {
             Dash();
+            ChangeCameraFove();
+        }
+        else
+        {
+            ResetCameraFov();
         }
 
         if(_dashCdTimer > 0)
@@ -59,8 +68,8 @@ public class PlayerDash : MonoBehaviour
         Vector3 forceToApply = _playerCamera.transform.forward * _dashForce + _playerCamera.transform.up * _dashUpwardForce;
 
         delayedForceToApply = forceToApply;
+        
         Invoke(nameof(DelayedDashForce), 0.025f);
-
         Invoke(nameof(ResetDash), _dashDuration);
     }
 
@@ -76,10 +85,34 @@ public class PlayerDash : MonoBehaviour
         _playerMovement.IsDashing = false;
     }
 
+    private void ChangeCameraFove()
+    {
+        _playerCamera.fieldOfView = Mathf.Lerp(_playerCamera.fieldOfView, _targetCameraFov, 10f * Time.deltaTime);
+    }
+
+    private void ResetCameraFov()
+    {
+        _playerCamera.fieldOfView = Mathf.Lerp(_playerCamera.fieldOfView, _basicCameraFov, 10f * Time.deltaTime);
+    }
+
+    IEnumerator ChangeCameraFov()
+    {
+        _currentCameraFovTime = _cameraFovTimer;
+
+        while(_currentCameraFovTime > 0f)
+        {
+            _currentCameraFovTime -= Time.deltaTime;
+            _playerCamera.fieldOfView = _targetCameraFov;
+
+            yield return null;
+        }
+    }
+
     private void GetReferences()
     {
         _rb = GetComponent<Rigidbody>();
         _playerMovement = GetComponent<PlayerMovement>();
         _playerStats = GetComponent<PlayerStats>();
+        _basicCameraFov = _playerCamera.fieldOfView;
     }
 }

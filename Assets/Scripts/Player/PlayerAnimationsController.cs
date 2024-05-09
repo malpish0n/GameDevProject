@@ -49,9 +49,14 @@ public class PlayerAnimationsController : MonoBehaviour
         {
             _animator.SetBool("isSliding", true);
         }
+        else if(_playerMovement.state == MovementState.sliding && _playerMovement.SlopeCheck())
+        {
+            _animator.SetBool("isOnSlope", true);
+        }
         else
         {
             _animator.SetBool("isSliding", false);
+            _animator.SetBool("isOnSlope", false);
         }
 
         if(_playerMovement.state == MovementState.jump)
