@@ -9,11 +9,12 @@ public class PlayerDash : MonoBehaviour
     private Rigidbody _rb;
     private PlayerMovement _playerMovement;
     private PlayerStats _playerStats;
-    
+
     private float _basicCameraFov;
-    private float _targetCameraFov = 80f;
+    private float _targetCameraFov = 70f;
     private float _cameraFovTimer = 2f;
     private float _currentCameraFovTime;
+    private bool _isDashing = false;
 
     [SerializeField] private float _dashForce;
     [SerializeField] private float _dashUpwardForce;
@@ -35,77 +36,58 @@ public class PlayerDash : MonoBehaviour
 
     private void GetInputs()
     {
-        if (Input.GetKey(KeyCode.LeftShift) && _rb.velocity != new Vector3(0, 0, 0) && _playerStats._stamina > 0)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && _rb.velocity != Vector3.zero && _playerStats._stamina > 0 && !_isDashing)
         {
-            Dash();
-            ChangeCameraFove();
-        }
-        else
-        {
-            ResetCameraFov();
+            StartCoroutine(DashCoroutine());
         }
 
-        if(_dashCdTimer > 0)
+        if (_dashCdTimer > 0)
         {
             _dashCdTimer -= Time.deltaTime;
         }
     }
 
-    private void Dash()
+    private IEnumerator DashCoroutine()
     {
-        if(_dashCdTimer > 0)
+        if (_dashCdTimer > 0)
         {
-            return;
+            yield break;
         }
         else
         {
             _dashCdTimer = _dashCd;
         }
-        
+
         _playerMovement.IsDashing = true;
         _playerStats.loseStamina(_dashStaminaCost);
 
         Vector3 forceToApply = _playerCamera.transform.forward * _dashForce + _playerCamera.transform.up * _dashUpwardForce;
 
-        delayedForceToApply = forceToApply;
-        
-        Invoke(nameof(DelayedDashForce), 0.025f);
-        Invoke(nameof(ResetDash), _dashDuration);
-    }
+        _rb.AddForce(forceToApply, ForceMode.Impulse);
 
-    private Vector3 delayedForceToApply;
+        float timer = 0f;
+        _isDashing = true;
 
-    private void DelayedDashForce()
-    {
-        _rb.AddForce(delayedForceToApply, ForceMode.Impulse);   
-    }
-
-    private void ResetDash()
-    {
-        _playerMovement.IsDashing = false;
-    }
-
-    private void ChangeCameraFove()
-    {
-        _playerCamera.fieldOfView = Mathf.Lerp(_playerCamera.fieldOfView, _targetCameraFov, 10f * Time.deltaTime);
-    }
-
-    private void ResetCameraFov()
-    {
-        _playerCamera.fieldOfView = Mathf.Lerp(_playerCamera.fieldOfView, _basicCameraFov, 10f * Time.deltaTime);
-    }
-
-    IEnumerator ChangeCameraFov()
-    {
-        _currentCameraFovTime = _cameraFovTimer;
-
-        while(_currentCameraFovTime > 0f)
+        while (timer < _dashDuration)
         {
-            _currentCameraFovTime -= Time.deltaTime;
-            _playerCamera.fieldOfView = _targetCameraFov;
-
+            _playerCamera.fieldOfView = Mathf.Lerp(_playerCamera.fieldOfView, _targetCameraFov, timer / _dashDuration);
+            timer += Time.deltaTime;
             yield return null;
         }
+
+        yield return new WaitForSeconds(_dashDuration);
+
+        timer = 0f;
+
+        while (timer < _dashDuration)
+        {
+            _playerCamera.fieldOfView = Mathf.Lerp(_playerCamera.fieldOfView, _basicCameraFov, timer / _dashDuration);
+            timer += Time.deltaTime;
+            yield return null;
+        }
+
+        _isDashing = false;
+        _playerMovement.IsDashing = false;
     }
 
     private void GetReferences()
