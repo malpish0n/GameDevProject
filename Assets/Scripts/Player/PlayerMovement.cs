@@ -5,13 +5,19 @@ using UnityEngine.Rendering;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [Header("References")]
+    [SerializeField] private Transform _playerModel;
+    private Rigidbody _rb;
+    private Animator _animator;
+
+    [Header("Move speed values")]
     [SerializeField] private float _movementSpeed;
     public float _walkSpeed;
     public float _runSpeed;
     public float _wallRunSpeed;
     public float _dashSpeed;
 
-    [SerializeField] private Transform _playerModel;
+    [Header("Jump")]
     [SerializeField] private float _jumpForce;
     [SerializeField] private float _jumpCooldown;
     [SerializeField] private float _airMultiplayer;
@@ -24,12 +30,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _maxSlopeAngle;
     private RaycastHit _slopeHit;
 
-    public float _hInput, _vInput;
+    [HideInInspector] public float _hInput, _vInput;
     private Vector3 _moveDirection;
 
-    private Rigidbody _rb;
-    private Animator _animator;
-
+    [Header("State bools")]
     public bool _isGrounded;
     public bool _isRunning;
     public bool _isWalking;

@@ -6,6 +6,7 @@ public class PlayerWallRunning : MonoBehaviour
 {
     [SerializeField] private LayerMask _goundMask;
     [SerializeField] private LayerMask _wallMask;
+
     [SerializeField] private float _wallRunForce;
     [SerializeField] private float _wallJumpUpForce;
     [SerializeField] private float _wallJumpSideForce;

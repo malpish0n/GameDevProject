@@ -5,9 +5,11 @@ using static PlayerMovement;
 
 public class PlayerAnimationsController : MonoBehaviour
 {
+    [Header("References")]
+    [Tooltip("Ref to Canvas PauseMenu")]
+    [SerializeField] private PauseMenu _pauseMenu;
     private Animator _animator;
     private PlayerMovement _playerMovement;
-    [SerializeField] private PauseMenu _pauseMenu;
 
     void Start()
     {
@@ -78,10 +80,10 @@ public class PlayerAnimationsController : MonoBehaviour
             _animator.SetBool("isFalling", false);
         }
 
-        if (_pauseMenu.EnablePauseMenu())
+        /*if (_pauseMenu.EnablePauseMenu())
         {
             _animator.SetBool("PauseMenu", true);
-        }
+        }*/
     }
 
     private void GetReferences()

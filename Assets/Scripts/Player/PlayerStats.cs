@@ -5,9 +5,11 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
-    private float _maxStamina = 100;
+    [Header("Stats")]
     public float _stamina;
+    private float _maxStamina = 100;
     private int _health;
+
     private DateTime lastStaminaChangeTime;
     private DateTime _gameStartTime;
 
