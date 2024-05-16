@@ -5,48 +5,41 @@ using UnityEngine;
 
 public class PlayerVaulting : MonoBehaviour
 {
-    // Start is called before the first frame update
-    private int vaultLayer;
-    public Camera cam;
-    private float playerHeight = 2f;
-    private float playerRadius = 0.5f;
-    void Start()
+    [SerializeField] private LayerMask _vaultLayer;
+    [SerializeField] private Transform _playerModel;
+    private Rigidbody _rb;
+    private bool _canVault;
+
+    private void Start()
     {
-        vaultLayer = LayerMask.NameToLayer("Vault");
-        vaultLayer = ~vaultLayer;
+        GetReferences();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         Vault();
     }
+
     private void Vault()
     {
+        RaycastHit hit;
+        _canVault = Physics.Raycast(transform.position, _playerModel.forward, out hit, 0.5f, _vaultLayer);
+        Debug.DrawLine(transform.position, transform.position + _playerModel.forward * 0.5f, Color.blue);
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (Physics.Raycast(cam.transform.position, cam.transform.forward, out var firstHit, 2f, vaultLayer))
+            if(_canVault)
             {
-                print("vaultable in front");
-                if (Physics.Raycast(firstHit.point + (cam.transform.forward * playerRadius) + (Vector3.up * 0.6f * playerHeight), Vector3.down, out var secondHit, playerHeight))
-                {
-                    print("found place to land");
-                    StartCoroutine(LerpVault(secondHit.point, 0.5f));
-                }
+                Debug.Log("Vaulting");
+
+                _rb.velocity = new Vector3(_rb.velocity.x, 0f, _rb.velocity.z);
+                _rb.AddForce(transform.up * 20f, ForceMode.Force);
             }
         }
     }
-    IEnumerator LerpVault(Vector3 targetPosition, float duration)
-    {
-        float time = 0;
-        Vector3 startPosition = transform.position;
 
-        while (time < duration)
-        {
-            transform.position = Vector3.Lerp(startPosition, targetPosition, time / duration);
-            time += Time.deltaTime;
-            yield return null;
-        }
-        transform.position = targetPosition;
+    private void GetReferences()
+    {
+        _rb = GetComponent<Rigidbody>();
     }
 }

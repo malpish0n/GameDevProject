@@ -7,6 +7,7 @@ public class PlayerAnimationsController : MonoBehaviour
 {
     private Animator _animator;
     private PlayerMovement _playerMovement;
+    [SerializeField] private PauseMenu _pauseMenu;
 
     void Start()
     {
@@ -75,6 +76,11 @@ public class PlayerAnimationsController : MonoBehaviour
         else
         {
             _animator.SetBool("isFalling", false);
+        }
+
+        if (_pauseMenu.EnablePauseMenu())
+        {
+            _animator.SetBool("PauseMenu", true);
         }
     }
 

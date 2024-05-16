@@ -19,9 +19,6 @@ public class PlayerStats : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("Stamina " + _stamina);
-        Debug.Log(TimeSinceLastStaminaChange());
-
         RecoverStamina();
     }
 
