@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -18,25 +19,49 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private float _playerHeight;
     [SerializeField] private LayerMask _groundMask;
-    private bool _isGrounded;
     [SerializeField] private float _groundDrag;
 
-    private float _hInput, _vInput;
+    [SerializeField] private float _maxSlopeAngle;
+    private RaycastHit _slopeHit;
+
+    public float _hInput, _vInput;
     private Vector3 _moveDirection;
 
     private Rigidbody _rb;
+    private Animator _animator;
+
+    public bool _isGrounded;
+    public bool _isRunning;
+    public bool _isWalking;
+    public bool _isWallrunning;
+    [SerializeField] private bool _isSliding;
+    [SerializeField] private bool _isDashing;
+
+    public bool IsSliding
+    {
+        get { return _isSliding; }
+        set { _isSliding = value; }
+    }
+
+    public bool IsDashing
+    {
+        get { return _isDashing; }
+        set { _isDashing = value; }
+    }
 
     public MovementState state;
-
     public enum MovementState
     {
+        idle,
         running,
         walking,
         wallrunning,
+        sliding,
+        dashing,
         air
     }
 
-    public bool _isWallrunning;
+    
 
     private void Start()
     {
@@ -45,11 +70,14 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("Wall run speed: " + _wallRunSpeed);
-
         GetInputs();
         SpeedControl();
         StateController();
+
+        Debug.Log("Is moving: " + IsMoving());
+        Debug.Log("Is walking: " + _isWalking);
+        Debug.Log("Is sliding" + IsSliding);
+        Debug.Log("Is dashing: " + IsDashing);
     }
 
     private void FixedUpdate()
@@ -62,45 +90,88 @@ public class PlayerMovement : MonoBehaviour
     {
         _hInput = Input.GetAxisRaw("Horizontal");
         _vInput = Input.GetAxisRaw("Vertical");
+        Input.GetKey(KeyCode.Z);
 
-        if (Input.GetKey(KeyCode.Space) && _canJump && _isGrounded)
+        if (Input.GetButton("Jump") && _canJump && _isGrounded)
         {
             _canJump = false;
 
             Jump();
             Invoke(nameof(ResetJump), _jumpCooldown);
         }
+
+        if (Input.GetKey(KeyCode.Z))
+        {
+            _isWalking = true;
+        }
+        else
+        {
+            _isWalking = false;
+        }
     }
 
     private void StateController()
     {
-        if(_isWallrunning)
-        {
-            state = MovementState.wallrunning;
-            _movementSpeed = _wallRunSpeed;
-        }
-
-        if(_isGrounded) 
+        if (_isGrounded && IsMoving() && !_isWalking)
         {
             state = MovementState.running;
-            _movementSpeed = _runSpeed;    
+            _movementSpeed = _runSpeed;
         }
-        else if (_isGrounded && Input.GetKey(KeyCode.LeftAlt))
-        {
+        else if (_isGrounded && IsMoving() && _isWalking) 
+        { 
             state = MovementState.walking;
             _movementSpeed = _walkSpeed;
         }
         else
         {
-            state = MovementState.air;
+            state = MovementState.idle;
         }
+
+        if (_isSliding)
+        {
+            state = MovementState.sliding;
+        }
+
+        if (_isDashing || (!_isGrounded && _isDashing))
+        {
+            state = MovementState.dashing;
+        }
+
+        if (_isWallrunning)
+        {
+            state = MovementState.wallrunning;
+            _movementSpeed = _wallRunSpeed;
+        }
+        
+        if(!_isGrounded)
+        {
+            state= MovementState.air;
+        }
+    }
+
+    private bool IsMoving()
+    {
+        if (_rb.velocity != new Vector3(0, 0, 0))
+        {
+            return true;
+        }
+
+        return false;
     }
 
     private void MovePlayer()
     {
         _moveDirection = orientation.forward * _vInput + orientation.right * _hInput;
 
-        if(_isGrounded )
+        if(SlopeCheck())
+        {
+            _rb.AddForce(SlopeMoveDirection(_moveDirection) * _movementSpeed * 10f, ForceMode.Force);
+
+            if (_rb.velocity.y < 0)
+                _rb.AddForce(Vector3.down * 100f, ForceMode.Force);
+        }
+
+        if(_isGrounded)
         {
             _rb.AddForce(_moveDirection.normalized * _movementSpeed * 10f, ForceMode.Force);
         }
@@ -108,7 +179,8 @@ public class PlayerMovement : MonoBehaviour
         {
             _rb.AddForce(_moveDirection.normalized * _movementSpeed * _airMultiplayer, ForceMode.Force);
         }
-        
+
+        _rb.useGravity = !SlopeCheck(); 
     }
 
     private void GroundCheck()
@@ -128,19 +200,25 @@ public class PlayerMovement : MonoBehaviour
 
     private void SpeedControl()
     {
-        Vector3 flatVel = new Vector3(_rb.velocity.x, 0f, _rb.velocity.z);
-
-        // limit velocity if needed
-        if (flatVel.magnitude > _movementSpeed)
+        if(SlopeCheck())
         {
-            Vector3 limitedVel = flatVel.normalized * _movementSpeed;
-            _rb.velocity = new Vector3(limitedVel.x, _rb.velocity.y, limitedVel.z);
+            if(_rb.velocity.magnitude > _movementSpeed)
+                _rb.velocity = _rb.velocity.normalized * _movementSpeed;
+        }
+        else
+        {
+            Vector3 flatVel = new Vector3(_rb.velocity.x, 0f, _rb.velocity.z);
+
+            if (flatVel.magnitude > _movementSpeed)
+            {
+                Vector3 limitedVel = flatVel.normalized * _movementSpeed;
+                _rb.velocity = new Vector3(limitedVel.x, _rb.velocity.y, limitedVel.z);
+            }
         }
     }
 
     private void Jump()
     {
-        // reset y velocity
         _rb.velocity = new Vector3(_rb.velocity.x, 0f, _rb.velocity.z);
 
         _rb.AddForce(transform.up * _jumpForce, ForceMode.Impulse);
@@ -151,8 +229,28 @@ public class PlayerMovement : MonoBehaviour
         _canJump = true;
     }
 
+    public bool SlopeCheck()
+    {
+        if(Physics.Raycast(transform.position, Vector3.down, out _slopeHit, _playerHeight * 0.5f + 1f))
+        {
+            Debug.DrawLine(transform.position, transform.position + Vector3.down * (_playerHeight * 0.5f + 1f), Color.green);
+
+            float angle = Vector3.Angle(Vector3.up, _slopeHit.normal);
+
+            return angle < _maxSlopeAngle && angle != 0;
+        }
+
+        return false;
+    }
+
+    public Vector3 SlopeMoveDirection(Vector3 direction)
+    {
+        return Vector3.ProjectOnPlane(direction, _slopeHit.normal).normalized;
+    }
+
     private void GetReferences()
     {
         _rb = GetComponent<Rigidbody>();
+        _animator = GetComponentInChildren<Animator>();
     }
 }
