@@ -12,8 +12,6 @@ public class PlayerCamera : MonoBehaviour
     private float _xRotation, _yRotation;
     private float _mouseX, _mouseY;
 
-    static float t = 0.0f;
-
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -37,7 +35,7 @@ public class PlayerCamera : MonoBehaviour
     {
         _yRotation += _mouseX;
         _xRotation -= _mouseY;
-        _xRotation = Mathf.Clamp(_xRotation, -90f, 90f);
+        _xRotation = Mathf.Clamp(_xRotation, -90f, 60f);
 
         transform.rotation = Quaternion.Euler(_xRotation, _yRotation, 0);
         _playerOrientation.rotation = Quaternion.Euler(0, _yRotation, 0);
