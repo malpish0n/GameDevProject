@@ -1,22 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerWallJump : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private Transform _playerModel;
+    [Tooltip("Reference to whole player object")]
+    [SerializeField] private Transform _player;
+    [SerializeField] private GameObject _camera;
+    private PlayerCamera _playerCamera;
     private Rigidbody _rb;
     private PlayerMovement _playerMovement;
 
     [Header("Raycasts")]
     private RaycastHit _wallRaycastHit;
-    private float _wallCheckDistance = 0.60f;
+    private float _wallCheckDistance = .6f;
     [Tooltip("Layer mask of wall that could be use for wall jumping")]
     [SerializeField] private LayerMask _wallMask;
 
-    private bool _isOnWall = false;
+    [SerializeField] private bool _isOnWall;
     private bool _exitWall;
+    private bool isJumping = false;
+
+    [Header("Wall Slide Settings")]
+    [SerializeField] private float wallSlideSpeed = .05f;
 
     void Start()
     {
@@ -29,15 +37,15 @@ public class PlayerWallJump : MonoBehaviour
         GroundCheck();
         WallJump();
 
-        Debug.Log("Is on wall: " +  _isOnWall);
+        _isOnWall = GroundCheck() && WallCheck();
+        _playerMovement.IsOnWall = _isOnWall;
     }
 
     private bool WallCheck()
     {
-        Debug.DrawRay(transform.position, _playerModel.forward * _wallCheckDistance, Color.red);
+        Debug.DrawRay(transform.position, _player.forward * _wallCheckDistance, Color.red);
 
-
-        if (Physics.Raycast(transform.position, _playerModel.forward, out _wallRaycastHit, _wallCheckDistance, _wallMask))
+        if (Physics.Raycast(transform.position, _player.forward, out _wallRaycastHit, _wallCheckDistance, _wallMask))
         {
             return true;
         }
@@ -47,22 +55,22 @@ public class PlayerWallJump : MonoBehaviour
 
     private bool GroundCheck()
     {
-        if(_playerMovement.state == PlayerMovement.MovementState.air)
+        if (_playerMovement.state == PlayerMovement.MovementState.air)
         {
             return true;
         }
-        
+
         return false;
     }
 
+    //Dodaæ korutynê, która bêdzie w³¹czaæ i wy³¹czaæ skrypt odpowiedzialny za obrót kamery
+    // Poogarniaæ wszustkie skrypty: nag³ówki i tooltpiy
     private void WallJump()
     {
-        _isOnWall = WallCheck() && GroundCheck();
-
-        if (_isOnWall)
+        if (_isOnWall && !isJumping)
         {
             _rb.useGravity = false;
-            _rb.velocity = Vector3.zero;
+            _rb.velocity = new Vector3(_rb.velocity.x, -wallSlideSpeed, _rb.velocity.z);
 
             if (Input.GetKeyDown(KeyCode.Space))
             {
@@ -71,24 +79,38 @@ public class PlayerWallJump : MonoBehaviour
         }
         else
         {
-            _rb.useGravity = true;
+            if (!isJumping)
+            {
+                _rb.useGravity = true;
+            }
+            
         }
     }
 
-
     private void Jump()
     {
+        isJumping = true;
         _rb.useGravity = true;
         _isOnWall = false;
 
         Vector3 forceToApply = transform.forward * -10f + transform.up * 10f;
         _rb.AddForce(forceToApply, ForceMode.Impulse);
-        _playerModel.transform.rotation = Quaternion.LookRotation(transform.forward * -1);
+
+        _player.transform.rotation = Quaternion.LookRotation(transform.forward * -1);
+        _camera.transform.rotation = Quaternion.LookRotation(transform.forward * -1);
+
+        Invoke(nameof(ResetJumping), 0.2f);
+    }
+
+    private void ResetJumping()
+    {
+        isJumping = false;
     }
 
     private void GetReferences()
     {
         _rb = GetComponent<Rigidbody>();
         _playerMovement = GetComponent<PlayerMovement>();
+        _playerCamera = _camera.GetComponent<PlayerCamera>();
     }
 }

@@ -6,7 +6,8 @@ using UnityEngine.Rendering;
 public class PlayerMovement : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private Transform _playerModel;
+    [Tooltip("Reference to whole player object")]
+    [SerializeField] private Transform _player;
     private Rigidbody _rb;
     private Animator _animator;
 
@@ -40,6 +41,7 @@ public class PlayerMovement : MonoBehaviour
     public bool _isWallrunning;
     private bool _isSliding;
     private bool _isDashing;
+    private bool _isOnWall;
 
     public bool IsSliding
     {
@@ -53,6 +55,12 @@ public class PlayerMovement : MonoBehaviour
         set { _isDashing = value; }
     }
 
+    public bool IsOnWall
+    {
+        get { return _isOnWall; }
+        set { _isOnWall = value; }
+    }
+
     public MovementState state;
     public enum MovementState
     {
@@ -63,6 +71,7 @@ public class PlayerMovement : MonoBehaviour
         sliding,
         dashing,
         jump,
+        onWall,
         air
     }
 
@@ -145,6 +154,17 @@ public class PlayerMovement : MonoBehaviour
             state = MovementState.wallrunning;
             _movementSpeed = _wallRunSpeed;
         }
+
+        if (_isOnWall)
+        {
+            state = MovementState.dashing;
+            _movementSpeed = _dashSpeed;
+        }
+        
+        if(!_isGrounded)
+        {
+            state = MovementState.air;
+        }
     }
 
     private bool IsMoving()
@@ -159,7 +179,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void MovePlayer()
     {
-        _moveDirection = _playerModel.forward * _vInput + _playerModel.right * _hInput;
+        _moveDirection = _player.forward * _vInput + _player.right * _hInput;
 
         if(SlopeCheck())
         {

@@ -8,6 +8,7 @@ public class PlayerCamera : MonoBehaviour
     [SerializeField] private float _sensitivity;
     [SerializeField] private Transform _playerOrientation;
     [SerializeField] private PlayerWallRunning _playerWallRunning;
+    [SerializeField] private PlayerWallJump _playerWallJump;
 
     private float _xRotation, _yRotation;
     private float _mouseX, _mouseY;
@@ -51,5 +52,10 @@ public class PlayerCamera : MonoBehaviour
         {
             transform.rotation *= Quaternion.Euler(0, 0, -10f);
         }
+    }
+
+    private void WallJumpCamRotate()
+    {
+
     }
 }
