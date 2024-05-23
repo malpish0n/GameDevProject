@@ -41,7 +41,7 @@ public class PlayerMovement : MonoBehaviour
     public bool _isWallrunning;
     private bool _isSliding;
     private bool _isDashing;
-    private bool _isOnWall;
+    [SerializeField] private bool _isOnWall;
 
     public bool IsSliding
     {
@@ -85,6 +85,11 @@ public class PlayerMovement : MonoBehaviour
         GetInputs();
         SpeedControl();
         StateController();
+
+        if (SlopeCheck())
+        {
+            _rb.drag = 20f;
+        }
     }
 
     private void FixedUpdate()
@@ -119,53 +124,44 @@ public class PlayerMovement : MonoBehaviour
 
     private void StateController()
     {
-        if (_isGrounded && IsMoving() && !_isWalking)
-        {
-            state = MovementState.running;
-            _movementSpeed = _runSpeed;
-        }
-        else if (_isGrounded && IsMoving() && _isWalking) 
-        { 
-            state = MovementState.walking;
-            _movementSpeed = _walkSpeed;
-        }
-        else
-        {
-            state = MovementState.idle;
-        }
-
-        if (_isSliding)
-        {
-            state = MovementState.sliding;
-        }
-
-        if (_isDashing || (!_isGrounded && _isDashing))
+        if (_isDashing)
         {
             state = MovementState.dashing;
             _movementSpeed = _dashSpeed;
         }
-        else if (!_isGrounded)
-        {
-            state = MovementState.air;
-        }
-
-        if (_isWallrunning)
+        else if (_isWallrunning)
         {
             state = MovementState.wallrunning;
             _movementSpeed = _wallRunSpeed;
         }
-
-        if (_isOnWall)
+        else if (_isSliding)
         {
-            state = MovementState.dashing;
-            _movementSpeed = _dashSpeed;
+            state = MovementState.sliding;
         }
-        
-        if(!_isGrounded)
+        else if (_isOnWall)
+        {
+            state = MovementState.onWall;
+        }
+        else if (_isGrounded && IsMoving() && !_isWalking)
+        {
+            state = MovementState.running;
+            _movementSpeed = _runSpeed;
+        }
+        else if (_isGrounded && IsMoving() && _isWalking)
+        {
+            state = MovementState.walking;
+            _movementSpeed = _walkSpeed;
+        }
+        else if (_isGrounded)
+        {
+            state = MovementState.idle;
+        }
+        else
         {
             state = MovementState.air;
         }
     }
+
 
     private bool IsMoving()
     {
@@ -204,9 +200,9 @@ public class PlayerMovement : MonoBehaviour
     private void GroundCheck()
     {
         RaycastHit hit;
+        float sphereRadius = 0.3f;
 
-        _isGrounded = Physics.Raycast(transform.position, Vector3.down, _playerHeight * 0.5f + 0.2f, _groundMask);
-        Debug.DrawLine(transform.position, transform.position - Vector3.up * (_playerHeight * 0.5f + 0.2f), Color.red);
+        _isGrounded = Physics.SphereCast(transform.position, sphereRadius, Vector3.down, out hit, _playerHeight * 0.5f + 0.2f, _groundMask);
 
         if (_isGrounded)
         {
@@ -217,6 +213,7 @@ public class PlayerMovement : MonoBehaviour
             _rb.drag = 0f;
         }
     }
+
 
     private void SpeedControl()
     {

@@ -14544,7 +14544,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 4b81e1e72bb805547965289122565064, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -18707,7 +18707,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 4b81e1e72bb805547965289122565064, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -20038,6 +20038,11 @@ PrefabInstance:
       propertyPath: m_UseGravity
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2427236698553018071, guid: c4d2a81e26e4e174ba1baeeab3e0831c,
+        type: 3}
+      propertyPath: m_Interpolate
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3071674781188231429, guid: c4d2a81e26e4e174ba1baeeab3e0831c,
         type: 3}
       propertyPath: _player
@@ -20046,7 +20051,7 @@ PrefabInstance:
     - target: {fileID: 3071674781188231429, guid: c4d2a81e26e4e174ba1baeeab3e0831c,
         type: 3}
       propertyPath: _jumpForce
-      value: 11
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 3071674781188231429, guid: c4d2a81e26e4e174ba1baeeab3e0831c,
         type: 3}
@@ -20058,6 +20063,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4432548299965626248, guid: c4d2a81e26e4e174ba1baeeab3e0831c,
+        type: 3}
+      propertyPath: _player
+      value: 
+      objectReference: {fileID: 9042840798504132531}
     - target: {fileID: 4432548299965626248, guid: c4d2a81e26e4e174ba1baeeab3e0831c,
         type: 3}
       propertyPath: _playerCamera
@@ -20073,6 +20083,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6777993695676130087, guid: c4d2a81e26e4e174ba1baeeab3e0831c,
+        type: 3}
+      propertyPath: _player
+      value: 
+      objectReference: {fileID: 9042840798504132531}
     - target: {fileID: 6777993695676130087, guid: c4d2a81e26e4e174ba1baeeab3e0831c,
         type: 3}
       propertyPath: _playerModel
@@ -20180,6 +20195,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5972862019314527843, guid: fea250cbf77878740a1d42b201d2c786,
         type: 3}
+      propertyPath: _sensitivity
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 5972862019314527843, guid: fea250cbf77878740a1d42b201d2c786,
+        type: 3}
       propertyPath: _playerOrientation
       value: 
       objectReference: {fileID: 9042840798504132531}
@@ -20188,6 +20208,11 @@ PrefabInstance:
       propertyPath: _playerWallRunning
       value: 
       objectReference: {fileID: 8196924487624989068}
+    - target: {fileID: 6689975172678299231, guid: fea250cbf77878740a1d42b201d2c786,
+        type: 3}
+      propertyPath: field of view
+      value: 65
+      objectReference: {fileID: 0}
     - target: {fileID: 8324788061278757179, guid: fea250cbf77878740a1d42b201d2c786,
         type: 3}
       propertyPath: m_Name
@@ -20245,8 +20270,10 @@ MonoBehaviour:
   _wallMask:
     serializedVersion: 2
     m_Bits: 2048
-  _isOnWall: 0
-  wallSlideSpeed: 0.05
+  _groundMask:
+    serializedVersion: 2
+    m_Bits: 256
+  wallSlideSpeed: 0.01
 --- !u!4 &9042840798504132531 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 423217074439098334, guid: c4d2a81e26e4e174ba1baeeab3e0831c,

@@ -6,20 +6,29 @@ using static UnityEngine.Tilemaps.Tilemap;
 
 public class PlayerSlide : MonoBehaviour
 {
+    [Header("References")]
+    [Tooltip("Reference to whole player object")]
     [SerializeField] private Transform _playerModel;
+    [Tooltip("Reference to player collider")]
     [SerializeField] private Transform _playerCollider;
     private Rigidbody _rb;
     private PlayerMovement _playerMovement;
 
+    [Header("Slide variables")]
     [SerializeField] private float _maxSlideTime;
     [SerializeField] private float _slideForce;
+
+    [Header("Timers")]
     private float _slideTimer;
 
+    [Header("Scale variabless")]
     [SerializeField] private float _slideYScale;
     private float _startYScale;
 
+    [Header("Inputs")]
     private float _vInput, _hInput;
 
+    [Header("State bools")]
     private bool _isSliding;
     
     private void Start()

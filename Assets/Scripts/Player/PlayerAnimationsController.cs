@@ -80,6 +80,15 @@ public class PlayerAnimationsController : MonoBehaviour
             _animator.SetBool("isFalling", false);
         }
 
+        if(_playerMovement.state == MovementState.onWall)
+        {
+            _animator.SetBool("isOnWall", true);
+        }
+        else
+        {
+            _animator.SetBool("isOnWall", false);
+        }
+
         /*if (_pauseMenu.EnablePauseMenu())
         {
             _animator.SetBool("PauseMenu", true);

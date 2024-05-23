@@ -4,25 +4,35 @@ using UnityEngine;
 
 public class PlayerDash : MonoBehaviour
 {
-    [SerializeField] private Transform _playerModel;
+    [Header("References")]
+    [Tooltip("Reference to whole player object")]
+    [SerializeField] private Transform _player;
+    [Tooltip("Reference to camera game object")]
     [SerializeField] private Camera _playerCamera;
     private Rigidbody _rb;
     private PlayerMovement _playerMovement;
     private PlayerStats _playerStats;
 
+    [Header("Camera variables")]
     private float _basicCameraFov;
     private float _targetCameraFov = 70f;
-    private float _cameraFovTimer = 2f;
-    private float _currentCameraFovTime;
-    private bool _isDashing = false;
 
+    [Header("Dash variables")]
     [SerializeField] private float _dashForce;
     [SerializeField] private float _dashUpwardForce;
     [SerializeField] private float _dashDuration;
     [SerializeField] private int _dashStaminaCost;
 
+    [Header("Timers")]
+    [Tooltip("Dash coldown")]
     [SerializeField] private float _dashCd;
     private float _dashCdTimer;
+    private float _cameraFovTimer = 2f;
+    private float _currentCameraFovTime;
+
+    [Header("State bools")]
+    private bool _isDashing = false;
+
 
     private void Start()
     {

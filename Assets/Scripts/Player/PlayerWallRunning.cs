@@ -4,32 +4,40 @@ using UnityEngine;
 
 public class PlayerWallRunning : MonoBehaviour
 {
-    [SerializeField] private LayerMask _goundMask;
-    [SerializeField] private LayerMask _wallMask;
+    [Header("References")]
+    [Tooltip("Reference to whole player object")]
+    [SerializeField] private Transform _player;
+    [Tooltip("Reference to camera game object")]
+    [SerializeField] private Transform _playerCamera;
+    private PlayerMovement _movement;
+    private Rigidbody _rb;
 
+    [Header("Forces")]
     [SerializeField] private float _wallRunForce;
     [SerializeField] private float _wallJumpUpForce;
     [SerializeField] private float _wallJumpSideForce;
+
+    [Header("Timer")]
     [SerializeField] private float _maxWallRunTime;
     private float _wallRunTimer;
 
+    [Header("Inputs")]
     private float _hInput, _vInput;
 
+    [Header("Raycasts")]
     [SerializeField] private float _wallCheckDistance;
     [SerializeField] private float _minJumpHeight;
+    [SerializeField] private LayerMask _goundMask;
+    [SerializeField] private LayerMask _wallMask;
     private RaycastHit _leftWallHit;
     private RaycastHit _rightWallHit;
     public bool _wallLeft;
     public bool _wallRight;
 
+    [Header("Wall exiting")]
     private bool _exitWall;
     [SerializeField] private float _exitWallTime;
     private float _exitWallTimer;
-
-    [SerializeField] private Transform _playerModel;
-    [SerializeField] private Transform _playerCamera;
-    private PlayerMovement _movement;
-    private Rigidbody _rb;
 
     private void Start()
     {
@@ -52,11 +60,11 @@ public class PlayerWallRunning : MonoBehaviour
 
     private void WallCheck()
     {
-        _wallRight = Physics.Raycast(transform.position, _playerModel.right, out _rightWallHit, _wallCheckDistance, _wallMask);
-        Debug.DrawLine(transform.position, transform.position + _playerModel.right * _wallCheckDistance, Color.red);
+        _wallRight = Physics.Raycast(transform.position, _player.right, out _rightWallHit, _wallCheckDistance, _wallMask);
+        Debug.DrawLine(transform.position, transform.position + _player.right * _wallCheckDistance, Color.red);
 
-        _wallLeft = Physics.Raycast(transform.position, -_playerModel.right, out _leftWallHit, _wallCheckDistance, _wallMask);
-        Debug.DrawLine(transform.position, transform.position + -_playerModel.right * _wallCheckDistance, Color.red);
+        _wallLeft = Physics.Raycast(transform.position, -_player.right, out _leftWallHit, _wallCheckDistance, _wallMask);
+        Debug.DrawLine(transform.position, transform.position + -_player.right * _wallCheckDistance, Color.red);
     }
 
     private bool IsAboveTheGround()

@@ -18,13 +18,15 @@ public class PlayerWallJump : MonoBehaviour
     private float _wallCheckDistance = .6f;
     [Tooltip("Layer mask of wall that could be use for wall jumping")]
     [SerializeField] private LayerMask _wallMask;
+    [SerializeField] private LayerMask _groundMask;
 
-    [SerializeField] private bool _isOnWall;
+    [Header("State bools")]
+    private bool _isOnWall;
     private bool _exitWall;
     private bool isJumping = false;
 
     [Header("Wall Slide Settings")]
-    [SerializeField] private float wallSlideSpeed = .05f;
+    [SerializeField] private float wallSlideSpeed;
 
     void Start()
     {
@@ -37,6 +39,8 @@ public class PlayerWallJump : MonoBehaviour
         GroundCheck();
         WallJump();
 
+        Debug.Log(GroundCheck());
+        
         _isOnWall = GroundCheck() && WallCheck();
         _playerMovement.IsOnWall = _isOnWall;
     }
@@ -55,16 +59,9 @@ public class PlayerWallJump : MonoBehaviour
 
     private bool GroundCheck()
     {
-        if (_playerMovement.state == PlayerMovement.MovementState.air)
-        {
-            return true;
-        }
-
-        return false;
+        return !Physics.Raycast(transform.position, Vector3.down, 1.1f, _groundMask);
     }
 
-    //Dodaæ korutynê, która bêdzie w³¹czaæ i wy³¹czaæ skrypt odpowiedzialny za obrót kamery
-    // Poogarniaæ wszustkie skrypty: nag³ówki i tooltpiy
     private void WallJump()
     {
         if (_isOnWall && !isJumping)
@@ -93,7 +90,7 @@ public class PlayerWallJump : MonoBehaviour
         _rb.useGravity = true;
         _isOnWall = false;
 
-        Vector3 forceToApply = transform.forward * -10f + transform.up * 10f;
+        Vector3 forceToApply = transform.forward * -8f + transform.up * 8f;
         _rb.AddForce(forceToApply, ForceMode.Impulse);
 
         _player.transform.rotation = Quaternion.LookRotation(transform.forward * -1);
