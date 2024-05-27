@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Dynamic Floating Text.meta
 guid: e27d51cf90668c044b8f70f3fad5eb38
+========
+guid: 95b81cb41ac23a04294af0d3d288fb8c
+>>>>>>>> 88d481331ba391009bd650de4ad7075254662731:Assets/malpish0n/Assets/Foliage/Gwangju_3D asset.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

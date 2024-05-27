@@ -7,28 +7,42 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<<< HEAD:Assets/malpish0n/Assets/Foliage/Gwangju_3D asset/15_BlackWalnutTree/Materials/BlackwalnutBark.mat
   m_Name: BlackwalnutBark
+========
+  m_Name: Ground_Checker
+>>>>>>>> 88d481331ba391009bd650de4ad7075254662731:Assets/malpish0n/Assets/Foliage/Gwangju_3D asset/Common_Assets/Bg_Preset/Ground_Checker.mat
   m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
+<<<<<<<< HEAD:Assets/malpish0n/Assets/Foliage/Gwangju_3D asset/15_BlackWalnutTree/Materials/BlackwalnutBark.mat
   - _METALLICSPECGLOSSMAP
   - _NORMALMAP
   - _OCCLUSIONMAP
+========
+  - _SURFACE_TYPE_TRANSPARENT
+>>>>>>>> 88d481331ba391009bd650de4ad7075254662731:Assets/malpish0n/Assets/Foliage/Gwangju_3D asset/Common_Assets/Bg_Preset/Ground_Checker.mat
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 2950
   stringTagMap:
-    RenderType: Opaque
-  disabledShaderPasses: []
+    RenderType: Transparent
+  disabledShaderPasses:
+  - DepthOnly
+  - SHADOWCASTER
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseMap:
+<<<<<<<< HEAD:Assets/malpish0n/Assets/Foliage/Gwangju_3D asset/15_BlackWalnutTree/Materials/BlackwalnutBark.mat
         m_Texture: {fileID: 2800000, guid: 5eabe88b6ee6b7049a2f93e216320f90, type: 3}
+========
+        m_Texture: {fileID: 2800000, guid: 526aac580bc98d944883b3ff0e894d54, type: 3}
+>>>>>>>> 88d481331ba391009bd650de4ad7075254662731:Assets/malpish0n/Assets/Foliage/Gwangju_3D asset/Common_Assets/Bg_Preset/Ground_Checker.mat
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -52,7 +66,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
+<<<<<<<< HEAD:Assets/malpish0n/Assets/Foliage/Gwangju_3D asset/15_BlackWalnutTree/Materials/BlackwalnutBark.mat
         m_Texture: {fileID: 2800000, guid: 5eabe88b6ee6b7049a2f93e216320f90, type: 3}
+========
+        m_Texture: {fileID: 2800000, guid: 526aac580bc98d944883b3ff0e894d54, type: 3}
+>>>>>>>> 88d481331ba391009bd650de4ad7075254662731:Assets/malpish0n/Assets/Foliage/Gwangju_3D asset/Common_Assets/Bg_Preset/Ground_Checker.mat
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -69,6 +87,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
         m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Tex:
+        m_Texture: {fileID: 8900000, guid: 5278d7860f6cb6744a17aba626e6ddfe, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -88,7 +110,7 @@ Material:
     - _AlphaClip: 0
     - _AlphaToMask: 0
     - _Blend: 0
-    - _BlendModePreserveSpecular: 1
+    - _BlendModePreserveSpecular: 0
     - _BumpScale: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
@@ -96,32 +118,52 @@ Material:
     - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
-    - _DstBlend: 0
-    - _DstBlendAlpha: 0
+    - _DstBlend: 10
+    - _DstBlendAlpha: 10
     - _EnvironmentReflections: 1
+<<<<<<<< HEAD:Assets/malpish0n/Assets/Foliage/Gwangju_3D asset/15_BlackWalnutTree/Materials/BlackwalnutBark.mat
+========
+    - _Exposure: 1
+>>>>>>>> 88d481331ba391009bd650de4ad7075254662731:Assets/malpish0n/Assets/Foliage/Gwangju_3D asset/Common_Assets/Bg_Preset/Ground_Checker.mat
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005
+<<<<<<<< HEAD:Assets/malpish0n/Assets/Foliage/Gwangju_3D asset/15_BlackWalnutTree/Materials/BlackwalnutBark.mat
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _Smoothness: 0.8
+========
+    - _QueueOffset: -50
+    - _ReceiveShadows: 1
+    - _Rotation: 0
+    - _Smoothness: 0.5
+>>>>>>>> 88d481331ba391009bd650de4ad7075254662731:Assets/malpish0n/Assets/Foliage/Gwangju_3D asset/Common_Assets/Bg_Preset/Ground_Checker.mat
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
-    - _SrcBlend: 1
+    - _SrcBlend: 5
     - _SrcBlendAlpha: 1
+<<<<<<<< HEAD:Assets/malpish0n/Assets/Foliage/Gwangju_3D asset/15_BlackWalnutTree/Materials/BlackwalnutBark.mat
     - _Surface: 0
+========
+    - _Surface: 1
+>>>>>>>> 88d481331ba391009bd650de4ad7075254662731:Assets/malpish0n/Assets/Foliage/Gwangju_3D asset/Common_Assets/Bg_Preset/Ground_Checker.mat
     - _WorkflowMode: 1
-    - _ZWrite: 1
+    - _ZWrite: 0
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
+    - _Tint: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
   m_BuildTextureStacks: []
+<<<<<<<< HEAD:Assets/malpish0n/Assets/Foliage/Gwangju_3D asset/15_BlackWalnutTree/Materials/BlackwalnutBark.mat
 --- !u!114 &8337542159381801395
+========
+--- !u!114 &3686241598444193229
+>>>>>>>> 88d481331ba391009bd650de4ad7075254662731:Assets/malpish0n/Assets/Foliage/Gwangju_3D asset/Common_Assets/Bg_Preset/Ground_Checker.mat
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}

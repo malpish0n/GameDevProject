@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/malpish0n/Assets/Foliage/Gwangju_3D asset.meta
 guid: 95b81cb41ac23a04294af0d3d288fb8c
+========
+guid: 10310ae16521bb541b38c9c6725e6996
+>>>>>>>> 88d481331ba391009bd650de4ad7075254662731:Assets/malpish0n/Assets/Foliage/Gwangju_3D asset/15_BlackWalnutTree.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

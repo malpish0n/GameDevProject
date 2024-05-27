@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/malpish0n/Assets/Rocks/Rocks and Vegetation Pack/Models/Maple Tree 2.fbx.meta
 guid: 8817ef7569b8d3241ae387e9f4ad7d3b
+========
+guid: a443184b34634bb42a2de4a004eb8bf2
+>>>>>>>> 88d481331ba391009bd650de4ad7075254662731:Assets/malpish0n/Assets/Foliage/wood_stick_06/wood_stick_06.FBX.meta
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -43,6 +47,7 @@ ModelImporter:
     addColliders: 0
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
+    importPhysicalCameras: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1

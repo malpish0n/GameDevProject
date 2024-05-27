@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/malpish0n/Assets/Foliage/Gwangju_3D asset/Common_Assets/Bg_Preset/Ground.png.meta
 guid: 526aac580bc98d944883b3ff0e894d54
+========
+guid: 5278d7860f6cb6744a17aba626e6ddfe
+>>>>>>>> 88d481331ba391009bd650de4ad7075254662731:Assets/malpish0n/Assets/Foliage/Gwangju_3D asset/Common_Assets/Bg_Preset/SkyColor.png.meta
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -55,7 +59,7 @@ TextureImporter:
   alphaIsTransparency: 0
   spriteTessellationDetail: -1
   textureType: 0
-  textureShape: 1
+  textureShape: 2
   singleChannelComponent: 0
   flipbookRows: 1
   flipbookColumns: 1
@@ -71,7 +75,11 @@ TextureImporter:
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
+<<<<<<<< HEAD:Assets/malpish0n/Assets/Foliage/Gwangju_3D asset/Common_Assets/Bg_Preset/Ground.png.meta
     textureFormat: 4
+========
+    textureFormat: -1
+>>>>>>>> 88d481331ba391009bd650de4ad7075254662731:Assets/malpish0n/Assets/Foliage/Gwangju_3D asset/Common_Assets/Bg_Preset/SkyColor.png.meta
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0

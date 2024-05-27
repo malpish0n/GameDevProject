@@ -1,9 +1,25 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/malpish0n/Assets/Foliage/wood_stick_06/wood_stick_06.FBX.meta
 guid: a443184b34634bb42a2de4a004eb8bf2
 ModelImporter:
   serializedVersion: 22200
+========
+guid: fe2b40954fc2d1243ae04d3a74578fd9
+ModelImporter:
+  serializedVersion: 21300
+>>>>>>>> 88d481331ba391009bd650de4ad7075254662731:Assets/malpish0n/Assets/Foliage/Gwangju_3D asset/15_BlackWalnutTree/Meshes/BlackWalnutTree_Spring.fbx.meta
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BlackWalnutTree_Bark
+    second: {fileID: 2100000, guid: b07b2282385c58948aad6bd732de371f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BlackWalnutTree_Spring
+    second: {fileID: 2100000, guid: 6b9836c2102d4b94fa4c20e1d9188703, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -14,7 +30,11 @@ ModelImporter:
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
+<<<<<<<< HEAD:Assets/malpish0n/Assets/Foliage/wood_stick_06/wood_stick_06.FBX.meta
     removeConstantScaleCurves: 0
+========
+    removeConstantScaleCurves: 1
+>>>>>>>> 88d481331ba391009bd650de4ad7075254662731:Assets/malpish0n/Assets/Foliage/Gwangju_3D asset/15_BlackWalnutTree/Meshes/BlackWalnutTree_Spring.fbx.meta
     motionNodeName: 
     rigImportErrors: 
     rigImportWarnings: 
@@ -101,7 +121,10 @@ ModelImporter:
   humanoidOversampling: 1
   avatarSetup: 0
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+<<<<<<<< HEAD:Assets/malpish0n/Assets/Foliage/wood_stick_06/wood_stick_06.FBX.meta
   importBlendShapeDeformPercent: 1
+========
+>>>>>>>> 88d481331ba391009bd650de4ad7075254662731:Assets/malpish0n/Assets/Foliage/Gwangju_3D asset/15_BlackWalnutTree/Meshes/BlackWalnutTree_Spring.fbx.meta
   remapMaterialsIfMaterialImportModeIsNone: 0
   additionalBone: 0
   userData: 
