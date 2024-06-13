@@ -1618,6 +1618,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3071674781188231429, guid: c4d2a81e26e4e174ba1baeeab3e0831c,
         type: 3}
+      propertyPath: _player
+      value: 
+      objectReference: {fileID: 2097365622}
+    - target: {fileID: 3071674781188231429, guid: c4d2a81e26e4e174ba1baeeab3e0831c,
+        type: 3}
       propertyPath: _dashSpeed
       value: 20
       objectReference: {fileID: 0}
@@ -1671,6 +1676,11 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: 0.00881654
       objectReference: {fileID: 0}
+    - target: {fileID: 4432548299965626248, guid: c4d2a81e26e4e174ba1baeeab3e0831c,
+        type: 3}
+      propertyPath: _player
+      value: 
+      objectReference: {fileID: 2097365622}
     - target: {fileID: 4432548299965626248, guid: c4d2a81e26e4e174ba1baeeab3e0831c,
         type: 3}
       propertyPath: _playerCamera
@@ -6454,18 +6464,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 589951d66ecae94489228006739749bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 2097365607}
-  cam: {fileID: 1268088669}
-  attackPoint: {fileID: 1489858342}
-  objectToThrow: {fileID: 1007300739711722442, guid: c282b8735fc836c4e8b4781a5848130c,
-    type: 3}
-  ShurikenUINumber: {fileID: 622097929}
-  ShurikenUI: {fileID: 1088069830}
-  totalThrows: 10
-  throwCooldown: 0.5
-  throwKey: 323
-  throwForce: 30
-  throwUpwardForce: 0
 --- !u!114 &2097365621 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3331887931335000061, guid: c4d2a81e26e4e174ba1baeeab3e0831c,
