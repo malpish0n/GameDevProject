@@ -38,9 +38,4 @@ public class PauseMenu : MonoBehaviour
 
         return false;
     }
-
-    public void Test()
-    {
-
-    }
 }

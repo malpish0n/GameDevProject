@@ -7,8 +7,8 @@ public class PlayerWallRunning : MonoBehaviour
     [Header("References")]
     [Tooltip("Reference to whole player object")]
     [SerializeField] private Transform _player;
-    [Tooltip("Reference to camera game object")]
-    [SerializeField] private Transform _playerCamera;
+    //[Tooltip("Reference to camera game object")]
+    //[SerializeField] private Transform _playerCamera;
     private PlayerMovement _movement;
     private Rigidbody _rb;
 
@@ -79,7 +79,7 @@ public class PlayerWallRunning : MonoBehaviour
 
         if ((_wallLeft || _wallRight) && _vInput > 0 && IsAboveTheGround() && !_exitWall)
         {
-            if(!_movement._isWallrunning)
+            if (!_movement._isWallrunning)
             {
                 StartWallRun();
             }
@@ -95,7 +95,7 @@ public class PlayerWallRunning : MonoBehaviour
                 _exitWallTimer = _exitWallTime;
             }
 
-            if(Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space))
             {
                 WallJump();
             }
@@ -107,19 +107,19 @@ public class PlayerWallRunning : MonoBehaviour
                 StopWallRun();
             }
 
-            if(_exitWallTimer > 0)
+            if (_exitWallTimer > 0)
             {
                 _exitWallTimer -= Time.deltaTime;
             }
 
-            if(_exitWallTimer <= 0)
+            if (_exitWallTimer <= 0)
             {
                 _exitWall = false;
             }
         }
         else
         {
-            if(_movement._isWallrunning)
+            if (_movement._isWallrunning)
             {
                 StopWallRun();
             }
