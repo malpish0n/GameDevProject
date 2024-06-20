@@ -11,9 +11,10 @@ public class PlayerAnimationsController : MonoBehaviour
     private Animator _animator;
     private PlayerMovement _playerMovement;
 
-    void Start()
+    void Awake()
     {
-        GetReferences();
+        _animator = GetComponentInChildren<Animator>();
+        _playerMovement = GetComponent<PlayerMovement>();
     }
 
     void Update()
@@ -93,11 +94,5 @@ public class PlayerAnimationsController : MonoBehaviour
         {
             _animator.SetBool("PauseMenu", true);
         }*/
-    }
-
-    private void GetReferences()
-    {
-        _animator = GetComponentInChildren<Animator>();
-        _playerMovement = GetComponent<PlayerMovement>();
     }
 }

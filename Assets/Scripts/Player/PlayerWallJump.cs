@@ -28,9 +28,11 @@ public class PlayerWallJump : MonoBehaviour
     [Header("Wall Slide Settings")]
     [SerializeField] private float wallSlideSpeed;
 
-    void Start()
+    void Awake()
     {
-        GetReferences();
+        _rb = GetComponent<Rigidbody>();
+        _playerMovement = GetComponent<PlayerMovement>();
+        _playerCamera = _camera.GetComponent<PlayerCamera>();
     }
 
     void Update()
@@ -38,8 +40,6 @@ public class PlayerWallJump : MonoBehaviour
         WallCheck();
         GroundCheck();
         WallJump();
-
-        Debug.Log(GroundCheck());
         
         _isOnWall = GroundCheck() && WallCheck();
         _playerMovement.IsOnWall = _isOnWall;
@@ -49,12 +49,7 @@ public class PlayerWallJump : MonoBehaviour
     {
         Debug.DrawRay(transform.position, _player.forward * _wallCheckDistance, Color.red);
 
-        if (Physics.Raycast(transform.position, _player.forward, out _wallRaycastHit, _wallCheckDistance, _wallMask))
-        {
-            return true;
-        }
-
-        return false;
+        return Physics.Raycast(transform.position, _player.forward, out _wallRaycastHit, _wallCheckDistance, _wallMask) ? true : false;
     }
 
     private bool GroundCheck()
@@ -93,21 +88,11 @@ public class PlayerWallJump : MonoBehaviour
         Vector3 forceToApply = transform.forward * -8f + transform.up * 8f;
         _rb.AddForce(forceToApply, ForceMode.Impulse);
 
-        _player.transform.rotation = Quaternion.LookRotation(transform.forward * -1);
-        _camera.transform.rotation = Quaternion.LookRotation(transform.forward * -1);
-
-        Invoke(nameof(ResetJumping), 0.2f);
+        Invoke("ResetJumping", 0.2f);
     }
 
     private void ResetJumping()
     {
         isJumping = false;
-    }
-
-    private void GetReferences()
-    {
-        _rb = GetComponent<Rigidbody>();
-        _playerMovement = GetComponent<PlayerMovement>();
-        _playerCamera = _camera.GetComponent<PlayerCamera>();
     }
 }

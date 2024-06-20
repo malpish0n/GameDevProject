@@ -21,7 +21,7 @@ public class PlayerCamera : MonoBehaviour
 
     private void Update()
     {
-        GetInputs();
+        //GetInputs();
         MoveCamera();
         WallrunCamRotate();
     }
@@ -38,7 +38,7 @@ public class PlayerCamera : MonoBehaviour
         _xRotation -= _mouseY;
         _xRotation = Mathf.Clamp(_xRotation, -60f, 70f);
 
-        transform.rotation = Quaternion.Euler(_xRotation, _yRotation, 0);
+        //transform.rotation = Quaternion.Euler(_xRotation, _yRotation, 0);
         _playerOrientation.rotation = Quaternion.Euler(0, _yRotation, 0);
     }
 

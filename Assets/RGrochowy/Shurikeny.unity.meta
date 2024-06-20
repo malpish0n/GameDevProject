@@ -1,7 +1,13 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/PowerUp/Materials/Room.mat.meta
+guid: 5e5ec64e46508d3408018763f89bbefb
+NativeFormatImporter:
+========
 guid: 1bfe13ca030f6a44cb89c6261746d153
 DefaultImporter:
+>>>>>>>> main:Assets/RGrochowy/Shurikeny.unity.meta
   externalObjects: {}
+  mainObjectFileID: 2100000
   userData: 
   assetBundleName: 
   assetBundleVariant: 

@@ -1,0 +1,169 @@
+* [33mc390a39d[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m Usunięcie zdublowanych skryptów
+* [33m4522ccb9[m Merge Ragro into Main
+* [33m5390c5d4[m merged Kot into main
+* [33m0f4ded05[m Merged Kot into main
+[31m|[m * [33mc01e9e6b[m[33m ([m[1;35mrefs/stash[m[33m)[m On main: !!GitHub_Desktop<main>
+[31m|[m[31m/[m[33m|[m 
+[31m|[m * [33m60d516ea[m index on main: 67462d24 Merge pull request #2 from malpish0n/malpish0n2
+[31m|[m[31m/[m  
+*   [33m67462d24[m Merge pull request #2 from malpish0n/malpish0n2
+[34m|[m[35m\[m  
+[34m|[m *   [33m735382c5[m[33m ([m[1;31morigin/malpish0n2[m[33m, [m[1;32mmalpish0n2[m[33m)[m Merge branch 'main' into malpish0n2
+[34m|[m [36m|[m[34m\[m  
+[34m|[m [36m|[m[34m/[m  
+[34m|[m[34m/[m[36m|[m   
+* [36m|[m   [33mc8aa685f[m Merge pull request #1 from malpish0n/guad3lup3
+[1;32m|[m[1;33m\[m [36m\[m  
+[1;32m|[m * [36m|[m [33m6e6ad435[m Finished basic movement
+[1;32m|[m * [36m|[m [33mb4159f3d[m Walljump (to improve) and objects of powerups
+[1;32m|[m [1;33m|[m * [33m2796d892[m #19
+[1;32m|[m [1;33m|[m * [33m083783f3[m #18
+[1;32m|[m [1;33m|[m * [33mb6d7f8d7[m #17
+[1;32m|[m [1;33m|[m * [33m7509ec68[m #16
+[1;32m|[m [1;33m|[m *   [33m88f3758e[m Merge branch 'malpish0n2' of https://github.com/malpish0n/GameDevProject into malpish0n2
+[1;32m|[m [1;33m|[m [1;34m|[m[1;35m\[m  
+[1;32m|[m [1;33m|[m [1;34m|[m * [33m88d48133[m #15
+[1;32m|[m [1;33m|[m * [1;35m|[m [33m91cfbacc[m #15
+[1;32m|[m [1;33m|[m [1;35m|[m[1;35m/[m  
+[1;32m|[m [1;33m|[m * [33m60c0dbc8[m #13
+[1;32m|[m [1;33m|[m * [33m7be1b7be[m #12
+[1;32m|[m [1;33m|[m * [33m08affbfa[m #11
+[1;32m|[m [1;33m|[m * [33m20ce6064[m #10
+[1;32m|[m [1;33m|[m * [33md692cd43[m #9
+[1;32m|[m [1;33m|[m * [33m0dbedb16[m #8
+[1;32m|[m [1;33m|[m * [33m69bea74f[m #7
+[1;32m|[m [1;33m|[m * [33m66102905[m #6
+[1;32m|[m [1;33m|[m * [33m429e6802[m #5
+[1;32m|[m [1;33m|[m * [33md234e76f[m #4
+[1;32m|[m [1;33m|[m * [33m5dcb84d2[m #3
+[1;32m|[m [1;33m|[m * [33m3a067a7b[m #2
+[1;32m|[m [1;33m|[m * [33m75b9cf72[m #1
+[1;32m|[m [1;33m|[m[1;32m/[m  
+[1;32m|[m[1;32m/[m[1;33m|[m   
+[1;32m|[m [1;33m|[m * [33m8257b14a[m[33m ([m[1;31morigin/AKot[m[33m)[m Update Timer.cs
+[1;32m|[m [1;33m|[m * [33m0e350c99[m Dodany raycast
+[1;32m|[m [1;33m|[m * [33m54d9ce70[m [do naprawy] przycisk
+[1;32m|[m [1;33m|[m * [33md13478a9[m objectHolder w prawidlowym miejscu
+[1;32m|[m [1;33m|[m * [33m451bd998[m jakeis zmiany w prefabach
+[1;32m|[m [1;33m|[m * [33m8cc011c4[m tutorial update
+[1;32m|[m [1;33m|[m *   [33m3d286cbf[m Merge branch 'guad3lup3' into AKot
+[1;32m|[m [1;33m|[m [31m|[m[32m\[m  
+[1;32m|[m [1;33m|[m * [32m|[m [33m7312c2f2[m fetchowanie
+[1;32m|[m [1;33m|[m * [32m|[m   [33mad1099c6[m Merge branch 'guad3lup3' into AKot
+[1;32m|[m [1;33m|[m [33m|[m[34m\[m [32m\[m  
+[1;32m|[m [1;33m|[m * [34m\[m [32m\[m   [33m0438db95[m Merge branch 'malpish0n' into AKot
+[1;32m|[m [1;33m|[m [35m|[m[36m\[m [34m\[m [32m\[m  
+[1;32m|[m [1;33m|[m [35m|[m [36m|[m [34m|[m [32m|[m * [33m79c04014[m[33m ([m[1;31morigin/Ragro[m[33m)[m Shurikens on hud and better looking targets
+[1;32m|[m [1;33m|[m [35m|[m [36m|[m [34m|[m [32m|[m *   [33m2378f20c[m Merge remote-tracking branch 'origin/guad3lup3' into Ragro
+[1;32m|[m [1;33m|[m [35m|[m [36m|[m [34m|[m [32m|[m [1;32m|[m[1;33m\[m  
+[1;32m|[m [1;33m|[m [35m|[m[1;33m_[m[36m|[m[1;33m_[m[34m|[m[1;33m_[m[32m|[m[1;33m_[m[1;32m|[m[1;33m/[m  
+[1;32m|[m [1;33m|[m[1;33m/[m[35m|[m [36m|[m [34m|[m [32m|[m [1;32m|[m   
+[1;32m|[m * [35m|[m [36m|[m [34m|[m [32m|[m [1;32m|[m [33mf6a9db59[m Added basic walljump
+[1;32m|[m * [35m|[m [36m|[m [34m|[m [32m|[m [1;32m|[m [33ma771e132[m Improved prefabs
+[1;32m|[m * [35m|[m [36m|[m [34m|[m [32m|[m [1;32m|[m [33m27a881e1[m Added pause menu prototype
+[1;32m|[m * [35m|[m [36m|[m [34m|[m [32m|[m [1;32m|[m [33mf089fdcf[m Test
+[1;32m|[m * [35m|[m [36m|[m [34m|[m [32m|[m [1;32m|[m [33mf214608e[m Dash particless init
+[1;32m|[m * [35m|[m [36m|[m [34m|[m [32m|[m [1;32m|[m [33mcaaf9b02[m Added FOV change on dash
+[1;32m|[m [32m|[m [35m|[m[32m_[m[36m|[m[32m_[m[34m|[m[32m/[m [1;32m/[m  
+[1;32m|[m [32m|[m[32m/[m[35m|[m [36m|[m [34m|[m [1;32m|[m   
+[1;32m|[m * [35m|[m [36m|[m [34m|[m [1;32m|[m [33me11335be[m Changed var names
+[1;32m|[m [34m|[m [35m|[m[34m_[m[36m|[m[34m/[m [1;32m/[m  
+[1;32m|[m [34m|[m[34m/[m[35m|[m [36m|[m [1;32m|[m   
+[1;32m|[m [34m|[m [35m|[m [36m|[m * [33mc2528131[m Ulepszenia
+[1;32m|[m [34m|[m [35m|[m [36m|[m * [33m8e5f4dba[m Levers
+[1;32m|[m [34m|[m [35m|[m [36m|[m *   [33mbb896b34[m Merge branch 'malpish0n' into Ragro
+[1;32m|[m [34m|[m [35m|[m [36m|[m [1;34m|[m[36m\[m  
+[1;32m|[m [34m|[m [35m|[m [36m|[m [1;34m|[m[36m/[m  
+[1;32m|[m [34m|[m [35m|[m [36m|[m[36m/[m[1;34m|[m   
+[1;32m|[m [34m|[m [35m|[m [36m|[m *   [33m478ac5dd[m Merge remote-tracking branch 'origin/guad3lup3' into Ragro
+[1;32m|[m [34m|[m [35m|[m [36m|[m [1;36m|[m[34m\[m  
+[1;32m|[m [34m|[m [35m|[m[34m_[m[36m|[m[34m_[m[1;36m|[m[34m/[m  
+[1;32m|[m [34m|[m[34m/[m[35m|[m [36m|[m [1;36m|[m   
+[1;32m|[m * [35m|[m [36m|[m [1;36m|[m [33ma215c036[m Added stamina
+[1;32m|[m [31m|[m [35m|[m [36m|[m *   [33m0a55806c[m Merge branch 'AKot' into Ragro
+[1;32m|[m [31m|[m [35m|[m [36m|[m [32m|[m[35m\[m  
+[1;32m|[m [31m|[m [35m|[m [36m|[m[35m_[m[32m|[m[35m/[m  
+[1;32m|[m [31m|[m [35m|[m[35m/[m[36m|[m [32m|[m   
+[1;32m|[m [31m|[m * [36m|[m [32m|[m [33mda6dc309[m Mała aktualizacja
+[1;32m|[m [31m|[m * [36m|[m [32m|[m   [33me4dc501e[m Merge branch 'malpish0n' into AKot
+[1;32m|[m [31m|[m [34m|[m[35m\[m [36m\[m [32m\[m  
+[1;32m|[m [31m|[m * [35m|[m [36m|[m [32m|[m [33m228f89f6[m Przycisk na timer
+[1;32m|[m [31m|[m * [35m|[m [36m|[m [32m|[m [33m4a39e402[m Nowy prefab do przycisku i dodany force do upuszczania przedmiotu
+[1;32m|[m [31m|[m * [35m|[m [36m|[m [32m|[m [33m49fdf1d7[m fix
+[1;32m|[m [31m|[m [35m|[m [35m|[m [36m|[m * [33m1bd73fa2[m Small Update
+[1;32m|[m [31m|[m [35m|[m [35m|[m [36m|[m * [33md11cbf53[m Update TargetHit.cs
+[1;32m|[m [31m|[m [35m|[m [35m|[m [36m|[m * [33mf780bb78[m fix
+[1;32m|[m [31m|[m [35m|[m [35m|[m [36m|[m *   [33m2c854c55[m Merge branch 'AKot' into Ragro
+[1;32m|[m [31m|[m [35m|[m [35m|[m [36m|[m [36m|[m[35m\[m  
+[1;32m|[m [31m|[m [35m|[m [35m|[m[35m_[m[36m|[m[35m_[m[36m|[m[35m/[m  
+[1;32m|[m [31m|[m [35m|[m[35m/[m[35m|[m [36m|[m [36m|[m   
+[1;32m|[m [31m|[m * [35m|[m [36m|[m [36m|[m [33mea70cf2d[m Przycisk na podłodze + obsługa przez niego drzwi
+[1;32m|[m [31m|[m * [35m|[m [36m|[m [36m|[m [33m32f0e022[m jakis dziwny subfolder mi sie pojawil lol
+[1;32m|[m [31m|[m * [35m|[m [36m|[m [36m|[m [33m1015cbc0[m małe zmiany w scenie
+[1;32m|[m [31m|[m * [35m|[m [36m|[m [36m|[m [33mf6a89263[m Picking up and dropping items (objects)
+[1;32m|[m [31m|[m [1;31m|[m [35m|[m [36m|[m * [33mc8436341[m małe poprawki
+[1;32m|[m [31m|[m [1;31m|[m [35m|[m [36m|[m * [33m05a6f952[m System rzucania pociskami i uzupełniania ich.
+[1;32m|[m [31m|[m [1;31m|[m [35m|[m[1;31m_[m[36m|[m[1;31m/[m  
+[1;32m|[m [31m|[m [1;31m|[m[1;31m/[m[35m|[m [36m|[m   
+[1;32m|[m [31m|[m [1;31m|[m [35m|[m [36m|[m *   [33m204c79a9[m[33m ([m[1;31morigin/malpish0n[m[33m)[m Merge branch 'malpish0n' of https://github.com/malpish0n/GameDevProject into malpish0n
+[1;32m|[m [31m|[m [1;31m|[m [35m|[m [36m|[m [1;32m|[m[1;33m\[m  
+[1;32m|[m [31m|[m [1;31m|[m [35m|[m [36m|[m [1;32m|[m * [33mf6540d0a[m #8
+[1;32m|[m [31m|[m [1;31m|[m [35m|[m [36m|[m * [1;33m|[m [33mf6d0e37a[m #2
+[1;32m|[m [31m|[m [1;31m|[m [35m|[m [36m|[m [1;33m|[m[1;33m/[m  
+[1;32m|[m [31m|[m [1;31m|[m [35m|[m [36m|[m * [33mae6f8f1f[m #1
+[1;32m|[m [31m|[m [1;31m|[m [35m|[m [36m|[m [1;33m|[m * [33mce3bbfc1[m[33m ([m[1;31morigin/Ja[m[33m)[m Portale animacje
+[1;32m|[m [31m|[m [1;31m|[m [35m|[m [36m|[m [1;33m|[m * [33m88faf407[m Portale
+[1;32m|[m [31m|[m [1;31m|[m [35m|[m [36m|[m [1;33m|[m * [33m62696faf[m Animation
+[1;32m|[m [31m|[m [1;31m|[m [35m|[m [36m|[m [1;33m|[m *   [33md032d9bf[m Animation
+[1;32m|[m [31m|[m [1;31m|[m [35m|[m [36m|[m [1;33m|[m [1;35m|[m[36m\[m  
+[1;32m|[m [31m|[m [1;31m|[m [35m|[m [36m|[m [1;33m|[m[36m_[m[1;35m|[m[36m/[m  
+[1;32m|[m [31m|[m [1;31m|[m [35m|[m [36m|[m[36m/[m[1;33m|[m [1;35m|[m   
+[1;32m|[m [31m|[m [1;31m|[m [35m|[m * [1;33m|[m [1;35m|[m [33mc8956781[m #6
+[1;32m|[m [31m|[m [1;31m|[m [35m|[m * [1;33m|[m [1;35m|[m   [33m3c67d73b[m Merge remote-tracking branch 'origin/guad3lup3' into malpish0n
+[1;32m|[m [31m|[m [1;31m|[m [35m|[m [31m|[m[31m\[m [1;33m\[m [1;35m\[m  
+[1;32m|[m [31m|[m [1;31m|[m[31m_[m[35m|[m[31m_[m[31m|[m[31m/[m [1;33m/[m [1;35m/[m  
+[1;32m|[m [31m|[m[31m/[m[1;31m|[m [35m|[m [31m|[m [1;33m|[m [1;35m|[m   
+[1;32m|[m * [1;31m|[m [35m|[m [31m|[m [1;33m|[m [1;35m|[m [33m5c2b1788[m Fixed state controller
+[1;32m|[m [32m|[m [1;31m|[m [35m|[m * [1;33m|[m [1;35m|[m [33m7c67107c[m #5
+[1;32m|[m [32m|[m [1;31m|[m [35m|[m * [1;33m|[m [1;35m|[m [33m4c3cc77b[m #4
+[1;32m|[m [32m|[m [1;31m|[m [35m|[m * [1;33m|[m [1;35m|[m [33m4f04bf9c[m #3
+[1;32m|[m [32m|[m [1;31m|[m [35m|[m * [1;33m|[m [1;35m|[m [33m911731f2[m #2
+[1;32m|[m [32m|[m [1;31m|[m [35m|[m[35m/[m [1;33m/[m [1;35m/[m  
+[1;32m|[m [32m|[m [1;31m|[m * [1;33m|[m [1;35m|[m [33m8148650c[m #1
+[1;32m|[m [32m|[m [1;31m|[m [32m|[m [1;33m|[m * [33m47207670[m #2
+[1;32m|[m [32m|[m [1;31m|[m [32m|[m [1;33m|[m *   [33mb29bc671[m Merge branch 'guad3lup3' into Ja
+[1;32m|[m [32m|[m [1;31m|[m [32m|[m [1;33m|[m [33m|[m[32m\[m  
+[1;32m|[m [32m|[m [1;31m|[m[32m_[m[32m|[m[32m_[m[1;33m|[m[32m_[m[33m|[m[32m/[m  
+[1;32m|[m [32m|[m[32m/[m[1;31m|[m [32m|[m [1;33m|[m [33m|[m   
+[1;32m|[m * [1;31m|[m [32m|[m [1;33m|[m [33m|[m [33m77522150[m[33m ([m[1;31morigin/arek[m[33m)[m test
+[1;32m|[m * [1;31m|[m [32m|[m [1;33m|[m [33m|[m [33m2e4a307b[m Added animation controller
+[1;32m|[m [34m|[m [1;31m|[m [32m|[m [1;33m|[m * [33m27f0efa6[m #1
+[1;32m|[m [34m|[m [1;31m|[m [32m|[m [1;33m|[m[32m/[m  
+[1;32m|[m [34m|[m [1;31m|[m [32m|[m[32m/[m[1;33m|[m   
+[1;32m|[m [34m|[m [1;31m|[m * [1;33m|[m   [33m23009958[m Merge branch 'guad3lup3' into malpish0n
+[1;32m|[m [34m|[m [1;31m|[m [35m|[m[34m\[m [1;33m\[m  
+[1;32m|[m [34m|[m [1;31m|[m[34m_[m[35m|[m[34m/[m [1;33m/[m  
+[1;32m|[m [34m|[m[34m/[m[1;31m|[m [35m|[m [1;33m|[m   
+[1;32m|[m * [1;31m|[m [35m|[m [1;33m|[m [33m420cfa30[m Added player model and imported animations
+[1;32m|[m * [1;31m|[m [35m|[m [1;33m|[m [33mea47fdf7[m Added dashing
+[1;32m|[m * [1;31m|[m [35m|[m [1;33m|[m [33maa613a1c[m Added sliding to movement
+[1;32m|[m * [1;31m|[m [35m|[m [1;33m|[m [33m33800987[m Improved wall-run and wall-run jumping add added slope movement(to improve)
+[1;32m|[m * [1;31m|[m [35m|[m [1;33m|[m [33me173aa49[m Set proper wall jump values
+[1;32m|[m [36m|[m [1;31m|[m * [1;33m|[m [33m0033a38a[m Delete Animations.meta
+[1;32m|[m [36m|[m [1;31m|[m * [1;33m|[m [33m3aae719c[m #1
+[1;32m|[m [36m|[m [1;31m|[m [1;33m|[m[1;33m/[m  
+[1;32m|[m [36m|[m [1;31m|[m *   [33mcee87f77[m Merge remote-tracking branch 'origin/guad3lup3' into malpish0n
+[1;32m|[m [36m|[m [1;31m|[m [1;31m|[m[36m\[m  
+[1;32m|[m [36m|[m [1;31m|[m[36m_[m[1;31m|[m[36m/[m  
+[1;32m|[m [36m|[m[36m/[m[1;31m|[m [1;31m|[m   
+[1;32m|[m * [1;31m|[m [1;31m|[m [33m777ccecd[m Added wall-run jumping
+[1;32m|[m [1;31m|[m[1;31m/[m [1;31m/[m  
+[1;32m|[m [1;31m|[m * [33m06ccb2a3[m Merge remote-tracking branch 'origin/guad3lup3' into malpish0n
+[1;32m|[m [1;31m|[m[1;32m/[m[1;31m|[m 
+[1;32m|[m[1;32m/[m[1;31m|[m[1;31m/[m  
+[1;32m|[m * [33m175e668c[m Added simple wall-run (to improve)
+[1;32m|[m * [33m0f4df1bf[m Added simple movement and camera system
+[1;32m|[m * [33m27cbbf6a[m Added Scene
+[1;32m|[m[1;32m/[m  
+* [33mfbf4d37f[m Init project
+* [33m6665094d[m Initial commit
