@@ -6,9 +6,20 @@ public class PickUp : MonoBehaviour
 {
     public Transform objectHolder, cam;
     public float dropForwardForce=2f, dropUpwardForce=2f;
+    private FloorTriggerScript floorTriggerScript;
+
+    private void Start()
+    {
+        floorTriggerScript = FindObjectOfType<FloorTriggerScript>();
+    }
 
     public void Pick()
     {
+        if (floorTriggerScript != null)
+        {
+            floorTriggerScript.HandleManualExit(GetComponent<Collider>());
+        }
+
         GetComponent<BoxCollider>().enabled = false;
         GetComponent<Rigidbody>().useGravity = false;
         GetComponent<Rigidbody>().freezeRotation = true;

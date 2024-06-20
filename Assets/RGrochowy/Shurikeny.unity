@@ -4794,6 +4794,28 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 11d1b98e947f0f442bdeeba3f2e62884, type: 3}
+--- !u!1 &1680833892 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4557892559585692737, guid: 9e8d9ddd9bd749e4a8ced6e4b01cf35a,
+    type: 3}
+  m_PrefabInstance: {fileID: 8326311420156816669}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1680833897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1680833892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00a18a54dc163d340827cb715de19c97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 0}
+  ShurikenUI: {fileID: 0}
+  ShurikenUINumber: {fileID: 0}
+  Shurikens: {fileID: 0}
 --- !u!1 &1690307848
 GameObject:
   m_ObjectHideFlags: 0
@@ -6436,7 +6458,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 590983053}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2097365607}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 783caff4f8f54f546bb26fec86e2acab, type: 3}
@@ -6454,25 +6476,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 589951d66ecae94489228006739749bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 2097365607}
-  cam: {fileID: 1268088669}
-  attackPoint: {fileID: 1489858342}
-  objectToThrow: {fileID: 1007300739711722442, guid: c282b8735fc836c4e8b4781a5848130c,
-    type: 3}
-  ShurikenUINumber: {fileID: 622097929}
-  ShurikenUI: {fileID: 1088069830}
-  totalThrows: 10
-  throwCooldown: 0.5
-  throwKey: 323
-  throwForce: 30
-  throwUpwardForce: 0
 --- !u!114 &2097365621 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3331887931335000061, guid: c4d2a81e26e4e174ba1baeeab3e0831c,
     type: 3}
   m_PrefabInstance: {fileID: 590983053}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2097365607}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7c99073d17a18e64e876fcac253389db, type: 3}
@@ -6738,7 +6748,11 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 523836887}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4557892559585692737, guid: 9e8d9ddd9bd749e4a8ced6e4b01cf35a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1680833897}
   m_SourcePrefab: {fileID: 100100000, guid: 9e8d9ddd9bd749e4a8ced6e4b01cf35a, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

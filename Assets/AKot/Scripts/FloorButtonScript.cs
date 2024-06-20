@@ -28,6 +28,4 @@ public class FloorButtonScript : MonoBehaviour
             //Debug.Log("dziala");
         }
     }
-
-    
 }
