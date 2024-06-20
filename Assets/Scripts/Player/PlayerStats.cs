@@ -13,7 +13,7 @@ public class PlayerStats : MonoBehaviour
     private DateTime lastStaminaChangeTime;
     private DateTime _gameStartTime;
 
-    private void Start()
+    private void Awake()
     {
         _stamina = _maxStamina;
         _gameStartTime = DateTime.Now;

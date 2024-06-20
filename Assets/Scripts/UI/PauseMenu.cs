@@ -9,7 +9,6 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private Camera _gameCamera;
     [SerializeField] private Camera _pauseCamera;
 
-
     private void Start()
     {
         _pauseCamera.enabled = false;

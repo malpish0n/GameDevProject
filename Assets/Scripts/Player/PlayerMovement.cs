@@ -81,9 +81,10 @@ public class PlayerMovement : MonoBehaviour
         unlimited
     }
 
-    private void Start()
+    private void Awake()
     {
-        GetReferences();
+        _rb = GetComponent<Rigidbody>();
+        _animator = GetComponentInChildren<Animator>();
     }
 
     private void Update()
@@ -152,6 +153,7 @@ public class PlayerMovement : MonoBehaviour
         {
             state = MovementState.wallrunning;
             _movementSpeed = _wallRunSpeed;
+            _rb.useGravity = false;
         }
         else if (_isSliding)
         {
@@ -286,11 +288,5 @@ public class PlayerMovement : MonoBehaviour
     public Vector3 SlopeMoveDirection(Vector3 direction)
     {
         return Vector3.ProjectOnPlane(direction, _slopeHit.normal).normalized;
-    }
-
-    private void GetReferences()
-    {
-        _rb = GetComponent<Rigidbody>();
-        _animator = GetComponentInChildren<Animator>();
     }
 }

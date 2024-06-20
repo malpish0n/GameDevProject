@@ -39,9 +39,10 @@ public class PlayerWallRunning : MonoBehaviour
     [SerializeField] private float _exitWallTime;
     private float _exitWallTimer;
 
-    private void Start()
+    private void Awake()
     {
-        GetReferences();
+        _rb = GetComponent<Rigidbody>();
+        _movement = GetComponent<PlayerMovement>();
     }
 
     private void Update()
@@ -130,6 +131,8 @@ public class PlayerWallRunning : MonoBehaviour
     {
         _movement._isWallrunning = true;
         _wallRunTimer = _maxWallRunTime;
+        _rb.useGravity = false;
+        Debug.Log("Wall Run Started: Gravity Disabled");
     }
 
     private void WallRunningMovement()
@@ -138,7 +141,6 @@ public class PlayerWallRunning : MonoBehaviour
         _rb.velocity = new Vector3(_rb.velocity.x, 0f, _rb.velocity.z);
 
         Vector3 wallNormal = _wallRight ? _rightWallHit.normal : _leftWallHit.normal;
-
         Vector3 wallForward = Vector3.Cross(wallNormal, transform.up);
     }
 
@@ -159,11 +161,5 @@ public class PlayerWallRunning : MonoBehaviour
 
         _rb.velocity = new Vector3(_rb.velocity.x, 0f, _rb.velocity.z);
         _rb.AddForce(forceToApply, ForceMode.Impulse);
-    }
-
-    private void GetReferences()
-    {
-        _rb = GetComponent<Rigidbody>();
-        _movement = GetComponent<PlayerMovement>();
     }
 }
