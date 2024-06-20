@@ -27,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _playerHeight;
     [SerializeField] private LayerMask _groundMask;
     [SerializeField] private float _groundDrag;
+    [SerializeField] private float sphereRadius;
 
     [SerializeField] private float _maxSlopeAngle;
     private RaycastHit _slopeHit;
@@ -42,6 +43,9 @@ public class PlayerMovement : MonoBehaviour
     private bool _isSliding;
     private bool _isDashing;
     [SerializeField] private bool _isOnWall;
+    public bool _isFreezed;
+    public bool _isUnlimited;
+    public bool _isRestricted;
 
     public bool IsSliding
     {
@@ -72,7 +76,9 @@ public class PlayerMovement : MonoBehaviour
         dashing,
         jump,
         onWall,
-        air
+        air,
+        freeze,
+        unlimited
     }
 
     private void Start()
@@ -124,7 +130,20 @@ public class PlayerMovement : MonoBehaviour
 
     private void StateController()
     {
-        if (_isDashing)
+
+        if (_isFreezed)
+        {
+            state = MovementState.freeze;
+            _rb.velocity = Vector3.zero;
+
+        }
+        else if (_isUnlimited)
+        {
+            state = MovementState.unlimited;
+            _movementSpeed = 999f;
+            return;
+        }
+        else if (_isDashing)
         {
             state = MovementState.dashing;
             _movementSpeed = _dashSpeed;
@@ -175,6 +194,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void MovePlayer()
     {
+        if (_isRestricted)
+        {
+            return;
+        }
+
         _moveDirection = _player.forward * _vInput + _player.right * _hInput;
 
         if(SlopeCheck())
@@ -200,7 +224,6 @@ public class PlayerMovement : MonoBehaviour
     private void GroundCheck()
     {
         RaycastHit hit;
-        float sphereRadius = 0.3f;
 
         _isGrounded = Physics.SphereCast(transform.position, sphereRadius, Vector3.down, out hit, _playerHeight * 0.5f + 0.2f, _groundMask);
 
