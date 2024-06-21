@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - pickable
+  - Lever
+  - Projectile
+  - Target
+  - pressable
   layers:
   - Default
   - TransparentFX
