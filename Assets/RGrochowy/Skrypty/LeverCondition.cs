@@ -7,8 +7,9 @@ public class LeverCondition : MonoBehaviour
     int leversActivated, requiredLevers;
 
     public GameObject doorP;
-    float smooth = 10f;
-    Quaternion target = Quaternion.Euler(0f, 180f, 0f);
+    private float smooth = 10f;
+    private Quaternion start = Quaternion.Euler(0f, 115f, 0f);
+    private Quaternion target = Quaternion.Euler(0f, 0f, 0f);
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +25,16 @@ public class LeverCondition : MonoBehaviour
         if (leversActivated >= requiredLevers)
         {
             Debug.Log("Open");
-            doorP.transform.rotation = Quaternion.Lerp(doorP.transform.rotation, target, Time.deltaTime * smooth);
+            doorP.transform.rotation = Quaternion.Slerp(doorP.transform.rotation, target, Time.deltaTime * smooth);
+        }
+        else
+        {
+            doorP.transform.rotation = Quaternion.Slerp(doorP.transform.rotation, start, Time.deltaTime * smooth);
+        }
+        
+        if (doorP.transform.rotation != start)
+        {
+            doorP.transform.rotation = Quaternion.Slerp(doorP.transform.rotation, start, Time.deltaTime* smooth);
         }
     }
 }
