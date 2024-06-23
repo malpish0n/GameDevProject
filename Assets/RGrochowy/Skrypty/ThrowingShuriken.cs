@@ -18,7 +18,7 @@ public class ThrowingSkuriken : MonoBehaviour
     public float throwCooldown = 0.5f;
 
     public KeyCode throwKey = KeyCode.Mouse0;
-    public float throwForce = 35;
+    public float throwForce = -35;
     public float throwUpwardForce;
 
     bool readyToThrow;
