@@ -67,14 +67,6 @@ public class PlayerWallJump : MonoBehaviour
                 Jump();
             }
         }
-        else
-        {
-            if (!isJumping)
-            {
-                _rb.useGravity = true;
-            }
-            
-        }
     }
 
     private void Jump()

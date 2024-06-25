@@ -131,18 +131,36 @@ public class PlayerWallRunning : MonoBehaviour
     {
         _movement._isWallrunning = true;
         _wallRunTimer = _maxWallRunTime;
-        _rb.useGravity = false;
-        Debug.Log("Wall Run Started: Gravity Disabled");
     }
 
     private void WallRunningMovement()
     {
         _rb.useGravity = false;
-        _rb.velocity = new Vector3(_rb.velocity.x, 0f, _rb.velocity.z);
 
         Vector3 wallNormal = _wallRight ? _rightWallHit.normal : _leftWallHit.normal;
-        Vector3 wallForward = Vector3.Cross(wallNormal, transform.up);
+        Vector3 wallForward;
+
+        if (_wallRight)
+        {
+            wallForward = Vector3.Cross(transform.up, wallNormal); // Odwrócony kierunek
+        }
+        else
+        {
+            wallForward = Vector3.Cross(wallNormal, transform.up);
+        }
+
+        // Usuniêcie sk³adowej pionowej prêdkoœci
+        Vector3 velocity = _rb.velocity;
+        velocity.y = 0;
+        _rb.velocity = velocity;
+
+        // Dodanie si³y w kierunku œciany (wzd³u¿ œciany)
+        _rb.AddForce(wallForward * _wallRunForce, ForceMode.Force);
+
+        // Jeœli potrzebujesz kompensowaæ grawitacjê, dodaj si³ê w górê
+        _rb.AddForce(Vector3.up * (_wallRunForce / 5), ForceMode.Force);  // Adjust the division factor as needed
     }
+
 
     private void StopWallRun()
     {
