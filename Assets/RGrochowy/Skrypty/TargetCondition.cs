@@ -15,14 +15,14 @@ public class TargetCondition : MonoBehaviour
     {
         targetsDestroyed = 0;
         requiredTargets = GameObject.FindGameObjectsWithTag("Target").Length;
-        Debug.Log("Requaired: "+requiredTargets);
+        Debug.Log("Requaired: " + requiredTargets);
     }
 
     public void TargetDestroyed()
     {
         targetsDestroyed++;
-        Debug.Log("Destoyered: "+targetsDestroyed);
-        if(targetsDestroyed >= requiredTargets)
+        Debug.Log("Destoyered: " + targetsDestroyed);
+        if (targetsDestroyed >= requiredTargets)
         {
             Debug.Log("Open");
             doorP.transform.rotation = Quaternion.Lerp(doorP.transform.rotation, target, Time.deltaTime * smooth);

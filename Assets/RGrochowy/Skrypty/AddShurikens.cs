@@ -13,7 +13,7 @@ public class AddShurikens : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     private void OnTriggerEnter(Collider other)
