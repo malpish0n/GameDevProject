@@ -34,9 +34,12 @@ public class PlayerDash : MonoBehaviour
     private bool _isDashing = false;
 
 
-    private void Start()
+    private void Awake()
     {
-        GetReferences();
+        _rb = GetComponent<Rigidbody>();
+        _playerMovement = GetComponent<PlayerMovement>();
+        _playerStats = GetComponent<PlayerStats>();
+        _basicCameraFov = _playerCamera.fieldOfView;
     }
 
     private void Update()
@@ -98,13 +101,5 @@ public class PlayerDash : MonoBehaviour
 
         _isDashing = false;
         _playerMovement.IsDashing = false;
-    }
-
-    private void GetReferences()
-    {
-        _rb = GetComponent<Rigidbody>();
-        _playerMovement = GetComponent<PlayerMovement>();
-        _playerStats = GetComponent<PlayerStats>();
-        _basicCameraFov = _playerCamera.fieldOfView;
     }
 }
