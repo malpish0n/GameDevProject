@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TargetHit : MonoBehaviour
+public class TargetHitBudda : MonoBehaviour
 {
-    public TargetCondition TC;
+    public TargetBudda TC;
 
     private void OnCollisionEnter(Collision collision)
     {
