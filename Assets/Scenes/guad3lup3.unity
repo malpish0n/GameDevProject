@@ -18416,12 +18416,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1443638425}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1482605241 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6088607685066269395, guid: 0a458ccb68325e844986ddc19ea104b8,
-    type: 3}
-  m_PrefabInstance: {fileID: 275412101}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1482605245 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8032412527903304960, guid: 0a458ccb68325e844986ddc19ea104b8,
@@ -18487,27 +18481,6 @@ MonoBehaviour:
   _ledgeJumpUpwardForce: 10
   _exitingLedge: 0
   _exitLedgeTime: 0
---- !u!114 &1498554650
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 916527732}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50e29476f0a310349b129a852955e8dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _player: {fileID: 1498554640}
-  _camera: {fileID: 1482605241}
-  _wallMask:
-    serializedVersion: 2
-    m_Bits: 2048
-  _groundMask:
-    serializedVersion: 2
-    m_Bits: 256
-  wallSlideSpeed: 0.01
 --- !u!1 &1525141560
 GameObject:
   m_ObjectHideFlags: 0
@@ -20882,8 +20855,7 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 5069694928531623583, guid: 749b824b7eb0cbe49893cf6f8f3c6bb3, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -20891,10 +20863,6 @@ PrefabInstance:
         type: 3}
       insertIndex: 8
       addedObject: {fileID: 1498554649}
-    - targetCorrespondingSourceObject: {fileID: 1976729301691000644, guid: 749b824b7eb0cbe49893cf6f8f3c6bb3,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1498554650}
   m_SourcePrefab: {fileID: 100100000, guid: 749b824b7eb0cbe49893cf6f8f3c6bb3, type: 3}
 --- !u!4 &1924232171 stripped
 Transform:
