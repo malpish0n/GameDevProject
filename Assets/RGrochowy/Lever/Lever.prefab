@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 49431d28e4e08734ba66418081448481, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -224,8 +224,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b52e91dead7e984c816e91a1dc234c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  leverTag: Lever
   player: {fileID: 6045734431797029820, guid: 60e1c8e4970b76c44a6358c1a63bd14b, type: 3}
   buttonRange: 4
-  material1: {fileID: 2100000, guid: 5d98bdf1555803245a13839d30389319, type: 2}
   material2: {fileID: 2100000, guid: 5828cdc173c50334da866fcd3e9edf57, type: 2}
   LC: {fileID: 7296624488089419980, guid: 50722fadb5ee1e247882c207cf028d08, type: 3}

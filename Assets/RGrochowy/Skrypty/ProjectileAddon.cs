@@ -9,7 +9,7 @@ public class ProjectileAddon : MonoBehaviour
     private bool targetHit;
     private void Start()
     {
-        rb=GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
     }
 
     private void OnCollisionEnter(Collision collision)
