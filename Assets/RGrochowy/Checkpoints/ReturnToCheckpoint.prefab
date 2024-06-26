@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 887252069498106040}
   - component: {fileID: 3197432736494468726}
   - component: {fileID: 2202263864807186379}
-  - component: {fileID: 1110672445884872473}
+  - component: {fileID: 8290147359886672768}
   m_Layer: 0
   m_Name: ReturnToCheckpoint
   m_TagString: Untagged
@@ -106,7 +106,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1110672445884872473
+--- !u!114 &8290147359886672768
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

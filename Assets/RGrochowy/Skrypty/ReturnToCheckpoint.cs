@@ -5,27 +5,24 @@ using UnityEngine;
 public class ReturnToCheckpoint : MonoBehaviour
 {
     public Vector3 checkpointPos;
-    
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.name == "PlayerCollider")
         {
             GameObject player = GameObject.Find("Player");
-            PlayerMovement movement = player.GetComponent<PlayerMovement>();
-            ThrowingSkuriken shurikens = player.GetComponent<ThrowingSkuriken>();
-            GameObject BlackScreen = GameObject.Find("FadeToBlack");
-            FadeEffect fadeScript = BlackScreen.GetComponent<FadeEffect>();
-            movement.enabled = false;
-            shurikens.DisableShurikens();
-            StartCoroutine(fadeScript.FadeToBlackAndBack(Return));
+            player.transform.position = checkpointPos;
         }
-    }
-
-    public void Return()
-    {
-        GameObject player = GameObject.Find("Player");
-        PlayerMovement movement = player.GetComponent<PlayerMovement>();
-        movement.enabled = true;
-        player.transform.position = checkpointPos;
     }
 }

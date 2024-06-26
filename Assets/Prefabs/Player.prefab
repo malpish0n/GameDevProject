@@ -96,7 +96,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   _groundDrag: 8
-  sphereRadius: 0
   _maxSlopeAngle: 45
   _hInput: 0
   _vInput: 0
@@ -105,9 +104,6 @@ MonoBehaviour:
   _isWalking: 0
   _isWallrunning: 0
   _isOnWall: 0
-  _isFreezed: 0
-  _isUnlimited: 0
-  _isRestricted: 0
   state: 5
 --- !u!114 &7713609047484098578
 MonoBehaviour:
@@ -208,18 +204,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1976729301691000644}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50e29476f0a310349b129a852955e8dc, type: 3}
+  m_Script: {fileID: 11500000, guid: 2cc082753754e424c83d5022f9430267, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _vaultLayer:
+    serializedVersion: 2
+    m_Bits: 0
   _player: {fileID: 5409442798466176260}
-  _camera: {fileID: 0}
-  _wallMask:
-    serializedVersion: 2
-    m_Bits: 2048
-  _groundMask:
-    serializedVersion: 2
-    m_Bits: 256
-  wallSlideSpeed: 0.01
+  raycastCount: 0
+  raycastGap: 0
+  raycastDistance: 0
+  show_debug_line: 0
+  vaultSpeed: 0
 --- !u!114 &8757630015652780647
 MonoBehaviour:
   m_ObjectHideFlags: 0

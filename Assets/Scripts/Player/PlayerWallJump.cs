@@ -9,6 +9,7 @@ public class PlayerWallJump : MonoBehaviour
     [Tooltip("Reference to whole player object")]
     [SerializeField] private Transform _player;
     [SerializeField] private GameObject _camera;
+    private PlayerCamera _playerCamera;
     private Rigidbody _rb;
     private PlayerMovement _playerMovement;
 
@@ -31,6 +32,7 @@ public class PlayerWallJump : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody>();
         _playerMovement = GetComponent<PlayerMovement>();
+        _playerCamera = _camera.GetComponent<PlayerCamera>();
     }
 
     void Update()
@@ -66,6 +68,14 @@ public class PlayerWallJump : MonoBehaviour
             {
                 Jump();
             }
+        }
+        else
+        {
+            if (!isJumping)
+            {
+                _rb.useGravity = true;
+            }
+            
         }
     }
 

@@ -30,11 +30,9 @@ public class PlayerSlide : MonoBehaviour
     [Header("State bools")]
     private bool _isSliding;
     
-    private void Awake()
+    private void Start()
     {
-        _rb = GetComponent<Rigidbody>();
-        _playerMovement = GetComponent<PlayerMovement>();
-        _startYScale = _playerModel.localScale.y;
+        GetRefereneces();
     }
 
     private void Update()
@@ -103,5 +101,13 @@ public class PlayerSlide : MonoBehaviour
         _playerMovement.IsSliding = false;
         _isSliding = false;
         _playerCollider.localScale = new Vector3(_playerCollider.localScale.x, _startYScale, _playerCollider.localScale.z);
+    }
+
+    private void GetRefereneces()
+    {
+        _rb = GetComponent<Rigidbody>();
+        _playerMovement = GetComponent<PlayerMovement>();
+
+        _startYScale = _playerModel.localScale.y;
     }
 }
