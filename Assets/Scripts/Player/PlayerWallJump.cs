@@ -75,7 +75,7 @@ public class PlayerWallJump : MonoBehaviour
         _rb.useGravity = true;
         _isOnWall = false;
 
-        Vector3 forceToApply = transform.forward * -8f + transform.up * 8f;
+        Vector3 forceToApply = transform.forward * -11f + transform.up * 11f;
         _rb.AddForce(forceToApply, ForceMode.Impulse);
 
         Invoke("ResetJumping", 0.2f);

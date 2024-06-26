@@ -8,8 +8,7 @@ public class TargetCondition : MonoBehaviour
     int targetsDestroyed, requiredTargets;
 
     public GameObject doorP;
-    float smooth = 10f;
-    Quaternion target = Quaternion.Euler(0f, 180f, 0f);
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,7 +24,7 @@ public class TargetCondition : MonoBehaviour
         if (targetsDestroyed >= requiredTargets)
         {
             Debug.Log("Open");
-            doorP.transform.rotation = Quaternion.Lerp(doorP.transform.rotation, target, Time.deltaTime * smooth);
+            doorP.SetActive(false);
         }
     }
 }
