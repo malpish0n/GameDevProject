@@ -1428,8 +1428,18 @@ PrefabInstance:
         type: 3}
       propertyPath: returnTo
       value: 
-      objectReference: {fileID: 2015723634}
+      objectReference: {fileID: 0}
     - target: {fileID: 3559006837702169976, guid: 7926dc674de2da441bd192307a9b137e,
+        type: 3}
+      propertyPath: checkpointReturnTrigger
+      value: 
+      objectReference: {fileID: 2015723633}
+    - target: {fileID: 3932921429765689068, guid: 7926dc674de2da441bd192307a9b137e,
+        type: 3}
+      propertyPath: returnTo
+      value: 
+      objectReference: {fileID: 2015723634}
+    - target: {fileID: 3932921429765689068, guid: 7926dc674de2da441bd192307a9b137e,
         type: 3}
       propertyPath: checkpointReturnTrigger
       value: 
@@ -6500,8 +6510,18 @@ PrefabInstance:
         type: 3}
       propertyPath: returnTo
       value: 
-      objectReference: {fileID: 2015723634}
+      objectReference: {fileID: 0}
     - target: {fileID: 3559006837702169976, guid: 7926dc674de2da441bd192307a9b137e,
+        type: 3}
+      propertyPath: checkpointReturnTrigger
+      value: 
+      objectReference: {fileID: 2015723633}
+    - target: {fileID: 3932921429765689068, guid: 7926dc674de2da441bd192307a9b137e,
+        type: 3}
+      propertyPath: returnTo
+      value: 
+      objectReference: {fileID: 2015723634}
+    - target: {fileID: 3932921429765689068, guid: 7926dc674de2da441bd192307a9b137e,
         type: 3}
       propertyPath: checkpointReturnTrigger
       value: 
@@ -6574,7 +6594,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &2015723634 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8290147359886672768, guid: 6d79e52f733f1fc448d75a7dfb733ca5,
+  m_CorrespondingSourceObject: {fileID: 1110672445884872473, guid: 6d79e52f733f1fc448d75a7dfb733ca5,
     type: 3}
   m_PrefabInstance: {fileID: 2862811793441957663}
   m_PrefabAsset: {fileID: 0}
@@ -6875,8 +6895,18 @@ PrefabInstance:
         type: 3}
       propertyPath: returnTo
       value: 
-      objectReference: {fileID: 2015723634}
+      objectReference: {fileID: 0}
     - target: {fileID: 3559006837702169976, guid: 7926dc674de2da441bd192307a9b137e,
+        type: 3}
+      propertyPath: checkpointReturnTrigger
+      value: 
+      objectReference: {fileID: 2015723633}
+    - target: {fileID: 3932921429765689068, guid: 7926dc674de2da441bd192307a9b137e,
+        type: 3}
+      propertyPath: returnTo
+      value: 
+      objectReference: {fileID: 2015723634}
+    - target: {fileID: 3932921429765689068, guid: 7926dc674de2da441bd192307a9b137e,
         type: 3}
       propertyPath: checkpointReturnTrigger
       value: 
