@@ -70,13 +70,18 @@ public class ThrowingSkuriken : MonoBehaviour
 
         if (totalThrows <= 0)
         {
-            ShurikenUI.SetActive(false);
-            Player.GetComponent<ThrowingSkuriken>().enabled = false;
+            DisableShurikens();
         }
     }
 
     private void ResetThrow()
     {
         readyToThrow = true;
+    }
+
+    public void DisableShurikens()
+    {
+        ShurikenUI.SetActive(false);
+        Player.GetComponent<ThrowingSkuriken>().enabled = false;
     }
 }
