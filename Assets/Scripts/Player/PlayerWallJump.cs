@@ -27,6 +27,8 @@ public class PlayerWallJump : MonoBehaviour
     [Header("Wall Slide Settings")]
     [SerializeField] private float wallSlideSpeed;
 
+    private float _jumpForce = 11f;
+
     void Awake()
     {
         _rb = GetComponent<Rigidbody>();
@@ -75,7 +77,7 @@ public class PlayerWallJump : MonoBehaviour
         _rb.useGravity = true;
         _isOnWall = false;
 
-        Vector3 forceToApply = transform.forward * -11f + transform.up * 11f;
+        Vector3 forceToApply = transform.forward * -_jumpForce + transform.up * _jumpForce;
         _rb.AddForce(forceToApply, ForceMode.Impulse);
 
         Invoke("ResetJumping", 0.2f);

@@ -12,6 +12,8 @@ public class TimerWall : MonoBehaviour
     private bool isPressed = false;
     public GameObject wall;
     public GameObject wallTwo;
+    public GameObject wallThree;
+    public GameObject wallFour;
     public GameObject particle;
 
     private void Start()
@@ -58,12 +60,16 @@ public class TimerWall : MonoBehaviour
                 particle.SetActive(true);
                 wall.SetActive(true);
                 wallTwo.SetActive(true);
+                wallThree.SetActive(true);
+                wallFour.SetActive(true);
             }
             else
             {
                 particle.SetActive(false);
                 wall.SetActive(false);
                 wallTwo.SetActive(false);
+                wallThree.SetActive(false);
+                wallFour.SetActive(false);
             }
         }
     }

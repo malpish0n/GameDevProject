@@ -7,7 +7,8 @@ public class Paruweczki : MonoBehaviour
     // Si³a, z jak¹ gracz zostanie wyrzucony
     public float launchForce = 1000f;
     // Kierunek, w którym gracz zostanie wyrzucony
-    public Vector3 launchDirection = Vector3.up;
+    public Vector3 launchDirection = Vector3.forward;
+    public Rigidbody playerRigidbody;
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -15,7 +16,7 @@ public class Paruweczki : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             // Pobierz komponent Rigidbody z obiektu gracza
-            Rigidbody playerRigidbody = collision.gameObject.GetComponent<Rigidbody>();
+            //Rigidbody playerRigidbody = collision.gameObject.GetComponent<Rigidbody>();
 
             if (playerRigidbody != null)
             {

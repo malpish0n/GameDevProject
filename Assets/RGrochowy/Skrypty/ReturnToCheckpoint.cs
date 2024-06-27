@@ -5,7 +5,15 @@ using UnityEngine;
 public class ReturnToCheckpoint : MonoBehaviour
 {
     public Vector3 checkpointPos;
-    
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            Return();
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.name == "PlayerCollider")
